@@ -1,0 +1,4 @@
+max train acc in epoch 47:   1.000000
+max val acc in epoch 86:   0.994667
+final train acc: 0.997143
+ final val acc: 0.992667

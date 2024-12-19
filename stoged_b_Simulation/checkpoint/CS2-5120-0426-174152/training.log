@@ -1,0 +1,13 @@
+04-26 17:41:52 <args> data_name: 1
+04-26 17:41:52 <args> L: 5120
+04-26 17:41:52 <args> N_sample: 50000.0
+04-26 17:41:52 <args> fault_f: 0.015
+04-26 17:41:52 <args> test_size: 0.3
+04-26 17:41:52 <args> batch_size: 64
+04-26 17:41:52 <args> max_epoch: 100
+04-26 17:41:52 <args> learning_rate: 0.001
+04-26 17:41:52 <args> weight_decay: 0.01
+04-26 17:41:52 <args> gamma: 0.98
+04-26 17:41:52 <args> print_step: 20
+04-26 17:41:52 <args> checkpoint_dir: ../checkpoint
+04-26 17:41:52 <args> save_model: True

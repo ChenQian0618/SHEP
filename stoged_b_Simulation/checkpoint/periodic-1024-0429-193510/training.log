@@ -1,0 +1,531 @@
+04-29 19:35:10 <args> data_name: 0
+04-29 19:35:10 <args> L: 1024
+04-29 19:35:10 <args> N_sample: 5000
+04-29 19:35:10 <args> fault_f: 0.3
+04-29 19:35:10 <args> test_size: 0.3
+04-29 19:35:10 <args> batch_size: 64
+04-29 19:35:10 <args> max_epoch: 50
+04-29 19:35:10 <args> learning_rate: 0.001
+04-29 19:35:10 <args> weight_decay: 0.001
+04-29 19:35:10 <args> gamma: 0.98
+04-29 19:35:10 <args> print_step: 20
+04-29 19:35:10 <args> checkpoint_dir: ../checkpoint
+04-29 19:35:10 <args> save_model: True
+04-29 19:35:10 train_datasize: 7000 | val_datasize: 3000
+04-29 19:35:13 ----------------------------------------------------------------
+04-29 19:35:13         Layer (type)               Output Shape         Param #
+04-29 19:35:13 ================================================================
+04-29 19:35:13              input-0              [-1, 1, 1024]               0
+04-29 19:35:13             Conv1d-1              [-1, 4, 1018]              32
+04-29 19:35:13        BatchNorm1d-2              [-1, 4, 1018]               8
+04-29 19:35:13               ReLU-3              [-1, 4, 1018]               0
+04-29 19:35:13          MaxPool1d-4               [-1, 4, 509]               0
+04-29 19:35:13             Conv1d-5               [-1, 8, 507]             104
+04-29 19:35:13        BatchNorm1d-6               [-1, 8, 507]              16
+04-29 19:35:13               ReLU-7               [-1, 8, 507]               0
+04-29 19:35:13          MaxPool1d-8               [-1, 8, 253]               0
+04-29 19:35:13             Conv1d-9              [-1, 16, 251]             400
+04-29 19:35:13       BatchNorm1d-10              [-1, 16, 251]              32
+04-29 19:35:13              ReLU-11              [-1, 16, 251]               0
+04-29 19:35:13         MaxPool1d-12              [-1, 16, 125]               0
+04-29 19:35:13            Conv1d-13              [-1, 64, 123]           3,136
+04-29 19:35:13       BatchNorm1d-14              [-1, 64, 123]             128
+04-29 19:35:13              ReLU-15              [-1, 64, 123]               0
+04-29 19:35:13         MaxPool1d-16               [-1, 64, 61]               0
+04-29 19:35:13            Conv1d-17              [-1, 128, 59]          24,704
+04-29 19:35:13       BatchNorm1d-18              [-1, 128, 59]             256
+04-29 19:35:13              ReLU-19              [-1, 128, 59]               0
+04-29 19:35:13         MaxPool1d-20              [-1, 128, 29]               0
+04-29 19:35:13            Conv1d-21              [-1, 256, 27]          98,560
+04-29 19:35:13       BatchNorm1d-22              [-1, 256, 27]             512
+04-29 19:35:13              ReLU-23              [-1, 256, 27]               0
+04-29 19:35:13         MaxPool1d-24              [-1, 256, 13]               0
+04-29 19:35:13            Conv1d-25              [-1, 512, 11]         393,728
+04-29 19:35:13       BatchNorm1d-26              [-1, 512, 11]           1,024
+04-29 19:35:13              ReLU-27              [-1, 512, 11]               0
+04-29 19:35:13         MaxPool1d-28               [-1, 512, 5]               0
+04-29 19:35:13            Conv1d-29              [-1, 1024, 3]       1,573,888
+04-29 19:35:13       BatchNorm1d-30              [-1, 1024, 3]           2,048
+04-29 19:35:13              ReLU-31              [-1, 1024, 3]               0
+04-29 19:35:13 AdaptiveMaxPool1d-32              [-1, 1024, 1]               0
+04-29 19:35:13            Linear-33                  [-1, 256]         262,400
+04-29 19:35:13              ReLU-34                  [-1, 256]               0
+04-29 19:35:13            Linear-35                   [-1, 64]          16,448
+04-29 19:35:13              ReLU-36                   [-1, 64]               0
+04-29 19:35:13            Linear-37                    [-1, 2]             130
+04-29 19:35:13 ================================================================
+04-29 19:35:13 Total params: 2,377,554
+04-29 19:35:13 Trainable params: 2,377,554
+04-29 19:35:13 Non-trainable params: 0
+04-29 19:35:13 ----------------------------------------------------------------
+04-29 19:35:13 Input size (MB): 0.00
+04-29 19:35:13 Forward/backward pass size (MB): 1.15
+04-29 19:35:13 Params size (MB): 9.07
+04-29 19:35:13 Estimated Total Size (MB): 10.22
+04-29 19:35:13 ----------------------------------------------------------------
+04-29 19:35:13 ================================================================
+04-29 19:35:13 
+04-29 19:35:13 -----Epoch 0/49-----
+04-29 19:35:13 current lr: [0.001]
+04-29 19:35:13 <tempinfo> Epoch:   0 [1280/7000],     step:  20     4128.5 samples/sec     0.0155 sec/batch     Train Acc: 61.33,  Train Loss: 0.6525
+04-29 19:35:13 <tempinfo> Epoch:   0 [2560/7000],     step:  40     8904.5 samples/sec     0.0072 sec/batch     Train Acc: 69.06,  Train Loss: 0.5904
+04-29 19:35:14 <tempinfo> Epoch:   0 [3840/7000],     step:  60     11428.2 samples/sec     0.0056 sec/batch     Train Acc: 73.91,  Train Loss: 0.5212
+04-29 19:35:14 <tempinfo> Epoch:   0 [5120/7000],     step:  80     11428.9 samples/sec     0.0056 sec/batch     Train Acc: 74.30,  Train Loss: 0.5301
+04-29 19:35:14 <tempinfo> Epoch:   0 [6400/7000],     step: 100     11507.3 samples/sec     0.0056 sec/batch     Train Acc: 76.95,  Train Loss: 0.4862
+04-29 19:35:14 <info> Epoch: 0,  Cost 0.8770 sec,  train-Acc: 71.5143,  train-Loss: 0.5520
+04-29 19:35:14 <info> Epoch: 0,  Cost 0.1221 sec,  val-Acc: 77.3667,  val-Loss: 0.4751
+04-29 19:35:14 save best epoch 1, best acc 0.7737
+04-29 19:35:14 -----Epoch 1/49-----
+04-29 19:35:14 current lr: [0.00098]
+04-29 19:35:14 <tempinfo> Epoch:   1 [1280/7000],     step:  20     3992.5 samples/sec     0.0160 sec/batch     Train Acc: 80.00,  Train Loss: 0.4427
+04-29 19:35:14 <tempinfo> Epoch:   1 [2560/7000],     step:  40     11539.8 samples/sec     0.0055 sec/batch     Train Acc: 81.09,  Train Loss: 0.4187
+04-29 19:35:14 <tempinfo> Epoch:   1 [3840/7000],     step:  60     11528.7 samples/sec     0.0056 sec/batch     Train Acc: 80.86,  Train Loss: 0.4112
+04-29 19:35:14 <tempinfo> Epoch:   1 [5120/7000],     step:  80     11531.6 samples/sec     0.0055 sec/batch     Train Acc: 81.17,  Train Loss: 0.4172
+04-29 19:35:14 <tempinfo> Epoch:   1 [6400/7000],     step: 100     11837.9 samples/sec     0.0054 sec/batch     Train Acc: 83.28,  Train Loss: 0.3620
+04-29 19:35:15 <info> Epoch: 1,  Cost 0.6046 sec,  train-Acc: 81.7857,  train-Loss: 0.3996
+04-29 19:35:15 <info> Epoch: 1,  Cost 0.1048 sec,  val-Acc: 50.5333,  val-Loss: 0.9612
+04-29 19:35:15 -----Epoch 2/49-----
+04-29 19:35:15 current lr: [0.0009604]
+04-29 19:35:15 <tempinfo> Epoch:   2 [1280/7000],     step:  20     4722.6 samples/sec     0.0136 sec/batch     Train Acc: 87.89,  Train Loss: 0.2986
+04-29 19:35:15 <tempinfo> Epoch:   2 [2560/7000],     step:  40     11531.5 samples/sec     0.0055 sec/batch     Train Acc: 91.64,  Train Loss: 0.2377
+04-29 19:35:15 <tempinfo> Epoch:   2 [3840/7000],     step:  60     11514.2 samples/sec     0.0056 sec/batch     Train Acc: 93.05,  Train Loss: 0.2205
+04-29 19:35:15 <tempinfo> Epoch:   2 [5120/7000],     step:  80     11743.1 samples/sec     0.0055 sec/batch     Train Acc: 92.66,  Train Loss: 0.2197
+04-29 19:35:15 <tempinfo> Epoch:   2 [6400/7000],     step: 100     11428.6 samples/sec     0.0056 sec/batch     Train Acc: 94.77,  Train Loss: 0.1343
+04-29 19:35:15 <info> Epoch: 2,  Cost 0.6104 sec,  train-Acc: 92.2857,  train-Loss: 0.2152
+04-29 19:35:15 <info> Epoch: 2,  Cost 0.1040 sec,  val-Acc: 77.9667,  val-Loss: 0.5544
+04-29 19:35:15 save best epoch 3, best acc 0.7797
+04-29 19:35:15 -----Epoch 3/49-----
+04-29 19:35:15 current lr: [0.00094119]
+04-29 19:35:15 <tempinfo> Epoch:   3 [1280/7000],     step:  20     4680.8 samples/sec     0.0137 sec/batch     Train Acc: 93.28,  Train Loss: 0.1918
+04-29 19:35:16 <tempinfo> Epoch:   3 [2560/7000],     step:  40     11682.5 samples/sec     0.0055 sec/batch     Train Acc: 96.17,  Train Loss: 0.1150
+04-29 19:35:16 <tempinfo> Epoch:   3 [3840/7000],     step:  60     11652.5 samples/sec     0.0055 sec/batch     Train Acc: 96.41,  Train Loss: 0.1183
+04-29 19:35:16 <tempinfo> Epoch:   3 [5120/7000],     step:  80     11733.8 samples/sec     0.0055 sec/batch     Train Acc: 96.64,  Train Loss: 0.0950
+04-29 19:35:16 <tempinfo> Epoch:   3 [6400/7000],     step: 100     11729.8 samples/sec     0.0055 sec/batch     Train Acc: 98.52,  Train Loss: 0.0658
+04-29 19:35:16 <info> Epoch: 3,  Cost 0.6071 sec,  train-Acc: 96.3429,  train-Loss: 0.1146
+04-29 19:35:16 <info> Epoch: 3,  Cost 0.1050 sec,  val-Acc: 98.1333,  val-Loss: 0.0655
+04-29 19:35:16 save best epoch 4, best acc 0.9813
+04-29 19:35:16 -----Epoch 4/49-----
+04-29 19:35:16 current lr: [0.00092237]
+04-29 19:35:16 <tempinfo> Epoch:   4 [1280/7000],     step:  20     4674.2 samples/sec     0.0137 sec/batch     Train Acc: 98.59,  Train Loss: 0.0612
+04-29 19:35:16 <tempinfo> Epoch:   4 [2560/7000],     step:  40     11160.4 samples/sec     0.0057 sec/batch     Train Acc: 98.28,  Train Loss: 0.0611
+04-29 19:35:16 <tempinfo> Epoch:   4 [3840/7000],     step:  60     11266.8 samples/sec     0.0057 sec/batch     Train Acc: 98.52,  Train Loss: 0.0511
+04-29 19:35:17 <tempinfo> Epoch:   4 [5120/7000],     step:  80     11349.0 samples/sec     0.0056 sec/batch     Train Acc: 98.75,  Train Loss: 0.0426
+04-29 19:35:17 <tempinfo> Epoch:   4 [6400/7000],     step: 100     11434.9 samples/sec     0.0056 sec/batch     Train Acc: 98.12,  Train Loss: 0.0700
+04-29 19:35:17 <info> Epoch: 4,  Cost 0.6189 sec,  train-Acc: 98.4571,  train-Loss: 0.0570
+04-29 19:35:17 <info> Epoch: 4,  Cost 0.1075 sec,  val-Acc: 98.8667,  val-Loss: 0.0534
+04-29 19:35:17 save best epoch 5, best acc 0.9887
+04-29 19:35:17 -----Epoch 5/49-----
+04-29 19:35:17 current lr: [0.00090392]
+04-29 19:35:17 <tempinfo> Epoch:   5 [1280/7000],     step:  20     4681.2 samples/sec     0.0137 sec/batch     Train Acc: 98.75,  Train Loss: 0.0435
+04-29 19:35:17 <tempinfo> Epoch:   5 [2560/7000],     step:  40     11615.0 samples/sec     0.0055 sec/batch     Train Acc: 98.52,  Train Loss: 0.0633
+04-29 19:35:17 <tempinfo> Epoch:   5 [3840/7000],     step:  60     11594.7 samples/sec     0.0055 sec/batch     Train Acc: 98.36,  Train Loss: 0.0638
+04-29 19:35:17 <tempinfo> Epoch:   5 [5120/7000],     step:  80     11432.4 samples/sec     0.0056 sec/batch     Train Acc: 99.06,  Train Loss: 0.0406
+04-29 19:35:17 <tempinfo> Epoch:   5 [6400/7000],     step: 100     11528.4 samples/sec     0.0056 sec/batch     Train Acc: 98.59,  Train Loss: 0.0541
+04-29 19:35:17 <info> Epoch: 5,  Cost 0.6101 sec,  train-Acc: 98.7000,  train-Loss: 0.0512
+04-29 19:35:18 <info> Epoch: 5,  Cost 0.1040 sec,  val-Acc: 95.6333,  val-Loss: 0.1439
+04-29 19:35:18 -----Epoch 6/49-----
+04-29 19:35:18 current lr: [0.00088584]
+04-29 19:35:18 <tempinfo> Epoch:   6 [1280/7000],     step:  20     4725.9 samples/sec     0.0135 sec/batch     Train Acc: 99.45,  Train Loss: 0.0207
+04-29 19:35:18 <tempinfo> Epoch:   6 [2560/7000],     step:  40     11737.7 samples/sec     0.0055 sec/batch     Train Acc: 99.14,  Train Loss: 0.0393
+04-29 19:35:18 <tempinfo> Epoch:   6 [3840/7000],     step:  60     11171.4 samples/sec     0.0057 sec/batch     Train Acc: 98.75,  Train Loss: 0.0339
+04-29 19:35:18 <tempinfo> Epoch:   6 [5120/7000],     step:  80     11679.8 samples/sec     0.0055 sec/batch     Train Acc: 99.22,  Train Loss: 0.0346
+04-29 19:35:18 <tempinfo> Epoch:   6 [6400/7000],     step: 100     11461.7 samples/sec     0.0056 sec/batch     Train Acc: 98.28,  Train Loss: 0.0573
+04-29 19:35:18 <info> Epoch: 6,  Cost 0.6112 sec,  train-Acc: 98.9714,  train-Loss: 0.0374
+04-29 19:35:18 <info> Epoch: 6,  Cost 0.1020 sec,  val-Acc: 98.0000,  val-Loss: 0.0737
+04-29 19:35:18 -----Epoch 7/49-----
+04-29 19:35:18 current lr: [0.00086813]
+04-29 19:35:18 <tempinfo> Epoch:   7 [1280/7000],     step:  20     4819.2 samples/sec     0.0133 sec/batch     Train Acc: 99.53,  Train Loss: 0.0192
+04-29 19:35:18 <tempinfo> Epoch:   7 [2560/7000],     step:  40     11511.6 samples/sec     0.0056 sec/batch     Train Acc: 99.22,  Train Loss: 0.0289
+04-29 19:35:19 <tempinfo> Epoch:   7 [3840/7000],     step:  60     11531.5 samples/sec     0.0055 sec/batch     Train Acc: 99.30,  Train Loss: 0.0272
+04-29 19:35:19 <tempinfo> Epoch:   7 [5120/7000],     step:  80     11799.7 samples/sec     0.0054 sec/batch     Train Acc: 98.67,  Train Loss: 0.0404
+04-29 19:35:19 <tempinfo> Epoch:   7 [6400/7000],     step: 100     11637.3 samples/sec     0.0055 sec/batch     Train Acc: 98.44,  Train Loss: 0.0539
+04-29 19:35:19 <info> Epoch: 7,  Cost 0.6050 sec,  train-Acc: 98.9714,  train-Loss: 0.0353
+04-29 19:35:19 <info> Epoch: 7,  Cost 0.1096 sec,  val-Acc: 98.9333,  val-Loss: 0.0429
+04-29 19:35:19 save best epoch 8, best acc 0.9893
+04-29 19:35:19 -----Epoch 8/49-----
+04-29 19:35:19 current lr: [0.00085076]
+04-29 19:35:19 <tempinfo> Epoch:   8 [1280/7000],     step:  20     4625.6 samples/sec     0.0138 sec/batch     Train Acc: 99.14,  Train Loss: 0.0316
+04-29 19:35:19 <tempinfo> Epoch:   8 [2560/7000],     step:  40     11636.2 samples/sec     0.0055 sec/batch     Train Acc: 98.44,  Train Loss: 0.0497
+04-29 19:35:19 <tempinfo> Epoch:   8 [3840/7000],     step:  60     11445.4 samples/sec     0.0056 sec/batch     Train Acc: 99.30,  Train Loss: 0.0192
+04-29 19:35:19 <tempinfo> Epoch:   8 [5120/7000],     step:  80     11529.3 samples/sec     0.0056 sec/batch     Train Acc: 99.45,  Train Loss: 0.0243
+04-29 19:35:19 <tempinfo> Epoch:   8 [6400/7000],     step: 100     11531.4 samples/sec     0.0056 sec/batch     Train Acc: 98.75,  Train Loss: 0.0417
+04-29 19:35:20 <info> Epoch: 8,  Cost 0.6105 sec,  train-Acc: 99.0286,  train-Loss: 0.0331
+04-29 19:35:20 <info> Epoch: 8,  Cost 0.1100 sec,  val-Acc: 98.0000,  val-Loss: 0.0672
+04-29 19:35:20 -----Epoch 9/49-----
+04-29 19:35:20 current lr: [0.00083375]
+04-29 19:35:20 <tempinfo> Epoch:   9 [1280/7000],     step:  20     4661.8 samples/sec     0.0137 sec/batch     Train Acc: 99.53,  Train Loss: 0.0175
+04-29 19:35:20 <tempinfo> Epoch:   9 [2560/7000],     step:  40     11638.9 samples/sec     0.0055 sec/batch     Train Acc: 99.45,  Train Loss: 0.0219
+04-29 19:35:20 <tempinfo> Epoch:   9 [3840/7000],     step:  60     11728.2 samples/sec     0.0055 sec/batch     Train Acc: 99.14,  Train Loss: 0.0272
+04-29 19:35:20 <tempinfo> Epoch:   9 [5120/7000],     step:  80     11680.0 samples/sec     0.0055 sec/batch     Train Acc: 99.45,  Train Loss: 0.0252
+04-29 19:35:20 <tempinfo> Epoch:   9 [6400/7000],     step: 100     11636.5 samples/sec     0.0055 sec/batch     Train Acc: 99.30,  Train Loss: 0.0309
+04-29 19:35:20 <info> Epoch: 9,  Cost 0.6030 sec,  train-Acc: 99.3143,  train-Loss: 0.0258
+04-29 19:35:20 <info> Epoch: 9,  Cost 0.1040 sec,  val-Acc: 98.7333,  val-Loss: 0.0539
+04-29 19:35:20 -----Epoch 10/49-----
+04-29 19:35:20 current lr: [0.00081707]
+04-29 19:35:20 <tempinfo> Epoch:  10 [1280/7000],     step:  20     4752.6 samples/sec     0.0135 sec/batch     Train Acc: 99.30,  Train Loss: 0.0245
+04-29 19:35:21 <tempinfo> Epoch:  10 [2560/7000],     step:  40     11531.5 samples/sec     0.0055 sec/batch     Train Acc: 98.67,  Train Loss: 0.0399
+04-29 19:35:21 <tempinfo> Epoch:  10 [3840/7000],     step:  60     11570.7 samples/sec     0.0055 sec/batch     Train Acc: 99.22,  Train Loss: 0.0292
+04-29 19:35:21 <tempinfo> Epoch:  10 [5120/7000],     step:  80     11749.0 samples/sec     0.0054 sec/batch     Train Acc: 98.83,  Train Loss: 0.0264
+04-29 19:35:21 <tempinfo> Epoch:  10 [6400/7000],     step: 100     11538.4 samples/sec     0.0055 sec/batch     Train Acc: 99.30,  Train Loss: 0.0250
+04-29 19:35:21 <info> Epoch: 10,  Cost 0.6060 sec,  train-Acc: 99.0857,  train-Loss: 0.0293
+04-29 19:35:21 <info> Epoch: 10,  Cost 0.1039 sec,  val-Acc: 98.9000,  val-Loss: 0.0432
+04-29 19:35:21 -----Epoch 11/49-----
+04-29 19:35:21 current lr: [0.00080073]
+04-29 19:35:21 <tempinfo> Epoch:  11 [1280/7000],     step:  20     4723.7 samples/sec     0.0135 sec/batch     Train Acc: 99.45,  Train Loss: 0.0206
+04-29 19:35:21 <tempinfo> Epoch:  11 [2560/7000],     step:  40     11212.2 samples/sec     0.0057 sec/batch     Train Acc: 99.53,  Train Loss: 0.0139
+04-29 19:35:21 <tempinfo> Epoch:  11 [3840/7000],     step:  60     11034.4 samples/sec     0.0058 sec/batch     Train Acc: 99.45,  Train Loss: 0.0199
+04-29 19:35:22 <tempinfo> Epoch:  11 [5120/7000],     step:  80     11230.5 samples/sec     0.0057 sec/batch     Train Acc: 99.14,  Train Loss: 0.0224
+04-29 19:35:22 <tempinfo> Epoch:  11 [6400/7000],     step: 100     11743.1 samples/sec     0.0055 sec/batch     Train Acc: 99.38,  Train Loss: 0.0197
+04-29 19:35:22 <info> Epoch: 11,  Cost 0.6211 sec,  train-Acc: 99.4000,  train-Loss: 0.0191
+04-29 19:35:22 <info> Epoch: 11,  Cost 0.1036 sec,  val-Acc: 98.3000,  val-Loss: 0.0573
+04-29 19:35:22 -----Epoch 12/49-----
+04-29 19:35:22 current lr: [0.00078472]
+04-29 19:35:22 <tempinfo> Epoch:  12 [1280/7000],     step:  20     4783.6 samples/sec     0.0134 sec/batch     Train Acc: 99.22,  Train Loss: 0.0281
+04-29 19:35:22 <tempinfo> Epoch:  12 [2560/7000],     step:  40     11681.5 samples/sec     0.0055 sec/batch     Train Acc: 99.06,  Train Loss: 0.0166
+04-29 19:35:22 <tempinfo> Epoch:  12 [3840/7000],     step:  60     11435.8 samples/sec     0.0056 sec/batch     Train Acc: 99.84,  Train Loss: 0.0051
+04-29 19:35:22 <tempinfo> Epoch:  12 [5120/7000],     step:  80     11800.3 samples/sec     0.0054 sec/batch     Train Acc: 99.38,  Train Loss: 0.0152
+04-29 19:35:22 <tempinfo> Epoch:  12 [6400/7000],     step: 100     11561.4 samples/sec     0.0055 sec/batch     Train Acc: 99.14,  Train Loss: 0.0265
+04-29 19:35:22 <info> Epoch: 12,  Cost 0.6017 sec,  train-Acc: 99.3714,  train-Loss: 0.0176
+04-29 19:35:23 <info> Epoch: 12,  Cost 0.1119 sec,  val-Acc: 97.7333,  val-Loss: 0.1095
+04-29 19:35:23 -----Epoch 13/49-----
+04-29 19:35:23 current lr: [0.00076902]
+04-29 19:35:23 <tempinfo> Epoch:  13 [1280/7000],     step:  20     4458.8 samples/sec     0.0144 sec/batch     Train Acc: 99.22,  Train Loss: 0.0173
+04-29 19:35:23 <tempinfo> Epoch:  13 [2560/7000],     step:  40     11617.3 samples/sec     0.0055 sec/batch     Train Acc: 99.61,  Train Loss: 0.0206
+04-29 19:35:23 <tempinfo> Epoch:  13 [3840/7000],     step:  60     11451.4 samples/sec     0.0056 sec/batch     Train Acc: 99.69,  Train Loss: 0.0147
+04-29 19:35:23 <tempinfo> Epoch:  13 [5120/7000],     step:  80     11657.2 samples/sec     0.0055 sec/batch     Train Acc: 99.30,  Train Loss: 0.0162
+04-29 19:35:23 <tempinfo> Epoch:  13 [6400/7000],     step: 100     11428.5 samples/sec     0.0056 sec/batch     Train Acc: 98.36,  Train Loss: 0.0516
+04-29 19:35:23 <info> Epoch: 13,  Cost 0.6189 sec,  train-Acc: 99.1714,  train-Loss: 0.0269
+04-29 19:35:23 <info> Epoch: 13,  Cost 0.1110 sec,  val-Acc: 97.0333,  val-Loss: 0.1084
+04-29 19:35:23 -----Epoch 14/49-----
+04-29 19:35:23 current lr: [0.00075364]
+04-29 19:35:23 <tempinfo> Epoch:  14 [1280/7000],     step:  20     4617.3 samples/sec     0.0139 sec/batch     Train Acc: 99.38,  Train Loss: 0.0227
+04-29 19:35:23 <tempinfo> Epoch:  14 [2560/7000],     step:  40     11686.7 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0134
+04-29 19:35:24 <tempinfo> Epoch:  14 [3840/7000],     step:  60     11832.3 samples/sec     0.0054 sec/batch     Train Acc: 99.77,  Train Loss: 0.0129
+04-29 19:35:24 <tempinfo> Epoch:  14 [5120/7000],     step:  80     11634.9 samples/sec     0.0055 sec/batch     Train Acc: 99.61,  Train Loss: 0.0141
+04-29 19:35:24 <tempinfo> Epoch:  14 [6400/7000],     step: 100     11743.1 samples/sec     0.0055 sec/batch     Train Acc: 99.53,  Train Loss: 0.0130
+04-29 19:35:24 <info> Epoch: 14,  Cost 0.6021 sec,  train-Acc: 99.6571,  train-Loss: 0.0145
+04-29 19:35:24 <info> Epoch: 14,  Cost 0.1090 sec,  val-Acc: 98.6333,  val-Loss: 0.0450
+04-29 19:35:24 -----Epoch 15/49-----
+04-29 19:35:24 current lr: [0.00073857]
+04-29 19:35:24 <tempinfo> Epoch:  15 [1280/7000],     step:  20     4711.7 samples/sec     0.0136 sec/batch     Train Acc: 99.84,  Train Loss: 0.0046
+04-29 19:35:24 <tempinfo> Epoch:  15 [2560/7000],     step:  40     11678.7 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0053
+04-29 19:35:24 <tempinfo> Epoch:  15 [3840/7000],     step:  60     12014.6 samples/sec     0.0053 sec/batch     Train Acc: 99.77,  Train Loss: 0.0127
+04-29 19:35:24 <tempinfo> Epoch:  15 [5120/7000],     step:  80     11743.1 samples/sec     0.0055 sec/batch     Train Acc: 99.69,  Train Loss: 0.0116
+04-29 19:35:25 <tempinfo> Epoch:  15 [6400/7000],     step: 100     11636.3 samples/sec     0.0055 sec/batch     Train Acc: 99.53,  Train Loss: 0.0161
+04-29 19:35:25 <info> Epoch: 15,  Cost 0.5975 sec,  train-Acc: 99.7286,  train-Loss: 0.0104
+04-29 19:35:25 <info> Epoch: 15,  Cost 0.1040 sec,  val-Acc: 97.6333,  val-Loss: 0.0756
+04-29 19:35:25 -----Epoch 16/49-----
+04-29 19:35:25 current lr: [0.0007238]
+04-29 19:35:25 <tempinfo> Epoch:  16 [1280/7000],     step:  20     4794.0 samples/sec     0.0133 sec/batch     Train Acc: 99.61,  Train Loss: 0.0168
+04-29 19:35:25 <tempinfo> Epoch:  16 [2560/7000],     step:  40     11836.8 samples/sec     0.0054 sec/batch     Train Acc: 99.77,  Train Loss: 0.0090
+04-29 19:35:25 <tempinfo> Epoch:  16 [3840/7000],     step:  60     11334.0 samples/sec     0.0056 sec/batch     Train Acc: 99.92,  Train Loss: 0.0029
+04-29 19:35:25 <tempinfo> Epoch:  16 [5120/7000],     step:  80     11841.4 samples/sec     0.0054 sec/batch     Train Acc: 99.77,  Train Loss: 0.0061
+04-29 19:35:25 <tempinfo> Epoch:  16 [6400/7000],     step: 100     11742.0 samples/sec     0.0055 sec/batch     Train Acc: 99.38,  Train Loss: 0.0154
+04-29 19:35:25 <info> Epoch: 16,  Cost 0.6003 sec,  train-Acc: 99.6143,  train-Loss: 0.0131
+04-29 19:35:25 <info> Epoch: 16,  Cost 0.1040 sec,  val-Acc: 98.4333,  val-Loss: 0.0672
+04-29 19:35:25 -----Epoch 17/49-----
+04-29 19:35:25 current lr: [0.00070932]
+04-29 19:35:25 <tempinfo> Epoch:  17 [1280/7000],     step:  20     4756.2 samples/sec     0.0135 sec/batch     Train Acc: 99.45,  Train Loss: 0.0157
+04-29 19:35:26 <tempinfo> Epoch:  17 [2560/7000],     step:  40     11746.5 samples/sec     0.0054 sec/batch     Train Acc: 99.61,  Train Loss: 0.0087
+04-29 19:35:26 <tempinfo> Epoch:  17 [3840/7000],     step:  60     11861.9 samples/sec     0.0054 sec/batch     Train Acc: 99.38,  Train Loss: 0.0155
+04-29 19:35:26 <tempinfo> Epoch:  17 [5120/7000],     step:  80     11868.8 samples/sec     0.0054 sec/batch     Train Acc: 99.69,  Train Loss: 0.0124
+04-29 19:35:26 <tempinfo> Epoch:  17 [6400/7000],     step: 100     11794.7 samples/sec     0.0054 sec/batch     Train Acc: 99.30,  Train Loss: 0.0246
+04-29 19:35:26 <info> Epoch: 17,  Cost 0.5989 sec,  train-Acc: 99.4571,  train-Loss: 0.0168
+04-29 19:35:26 <info> Epoch: 17,  Cost 0.1040 sec,  val-Acc: 97.7667,  val-Loss: 0.0723
+04-29 19:35:26 -----Epoch 18/49-----
+04-29 19:35:26 current lr: [0.00069514]
+04-29 19:35:26 <tempinfo> Epoch:  18 [1280/7000],     step:  20     4694.6 samples/sec     0.0136 sec/batch     Train Acc: 99.53,  Train Loss: 0.0160
+04-29 19:35:26 <tempinfo> Epoch:  18 [2560/7000],     step:  40     11428.3 samples/sec     0.0056 sec/batch     Train Acc: 99.69,  Train Loss: 0.0073
+04-29 19:35:26 <tempinfo> Epoch:  18 [3840/7000],     step:  60     11118.1 samples/sec     0.0058 sec/batch     Train Acc: 99.45,  Train Loss: 0.0140
+04-29 19:35:27 <tempinfo> Epoch:  18 [5120/7000],     step:  80     11428.6 samples/sec     0.0056 sec/batch     Train Acc: 99.53,  Train Loss: 0.0170
+04-29 19:35:27 <tempinfo> Epoch:  18 [6400/7000],     step: 100     11735.3 samples/sec     0.0055 sec/batch     Train Acc: 99.69,  Train Loss: 0.0117
+04-29 19:35:27 <info> Epoch: 18,  Cost 0.6142 sec,  train-Acc: 99.6000,  train-Loss: 0.0126
+04-29 19:35:27 <info> Epoch: 18,  Cost 0.1020 sec,  val-Acc: 97.1000,  val-Loss: 0.0810
+04-29 19:35:27 -----Epoch 19/49-----
+04-29 19:35:27 current lr: [0.00068123]
+04-29 19:35:27 <tempinfo> Epoch:  19 [1280/7000],     step:  20     4826.8 samples/sec     0.0133 sec/batch     Train Acc: 99.84,  Train Loss: 0.0053
+04-29 19:35:27 <tempinfo> Epoch:  19 [2560/7000],     step:  40     11615.8 samples/sec     0.0055 sec/batch     Train Acc: 99.77,  Train Loss: 0.0052
+04-29 19:35:27 <tempinfo> Epoch:  19 [3840/7000],     step:  60     11757.9 samples/sec     0.0054 sec/batch     Train Acc: 99.77,  Train Loss: 0.0137
+04-29 19:35:27 <tempinfo> Epoch:  19 [5120/7000],     step:  80     11599.8 samples/sec     0.0055 sec/batch     Train Acc: 99.53,  Train Loss: 0.0182
+04-29 19:35:27 <tempinfo> Epoch:  19 [6400/7000],     step: 100     11410.9 samples/sec     0.0056 sec/batch     Train Acc: 99.84,  Train Loss: 0.0087
+04-29 19:35:27 <info> Epoch: 19,  Cost 0.6068 sec,  train-Acc: 99.7714,  train-Loss: 0.0097
+04-29 19:35:28 <info> Epoch: 19,  Cost 0.1100 sec,  val-Acc: 98.5000,  val-Loss: 0.0469
+04-29 19:35:28 -----Epoch 20/49-----
+04-29 19:35:28 current lr: [0.00066761]
+04-29 19:35:28 <tempinfo> Epoch:  20 [1280/7000],     step:  20     4368.5 samples/sec     0.0147 sec/batch     Train Acc: 99.84,  Train Loss: 0.0048
+04-29 19:35:28 <tempinfo> Epoch:  20 [2560/7000],     step:  40     10284.5 samples/sec     0.0062 sec/batch     Train Acc: 100.00,  Train Loss: 0.0027
+04-29 19:35:28 <tempinfo> Epoch:  20 [3840/7000],     step:  60     11603.6 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0013
+04-29 19:35:28 <tempinfo> Epoch:  20 [5120/7000],     step:  80     11658.1 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0029
+04-29 19:35:28 <tempinfo> Epoch:  20 [6400/7000],     step: 100     11626.1 samples/sec     0.0055 sec/batch     Train Acc: 99.45,  Train Loss: 0.0116
+04-29 19:35:28 <info> Epoch: 20,  Cost 0.6346 sec,  train-Acc: 99.8143,  train-Loss: 0.0052
+04-29 19:35:28 <info> Epoch: 20,  Cost 0.1030 sec,  val-Acc: 98.3667,  val-Loss: 0.1032
+04-29 19:35:28 -----Epoch 21/49-----
+04-29 19:35:28 current lr: [0.00065426]
+04-29 19:35:28 <tempinfo> Epoch:  21 [1280/7000],     step:  20     4811.1 samples/sec     0.0133 sec/batch     Train Acc: 99.30,  Train Loss: 0.0194
+04-29 19:35:28 <tempinfo> Epoch:  21 [2560/7000],     step:  40     11743.0 samples/sec     0.0055 sec/batch     Train Acc: 99.53,  Train Loss: 0.0139
+04-29 19:35:29 <tempinfo> Epoch:  21 [3840/7000],     step:  60     11327.5 samples/sec     0.0056 sec/batch     Train Acc: 99.92,  Train Loss: 0.0060
+04-29 19:35:29 <tempinfo> Epoch:  21 [5120/7000],     step:  80     11693.2 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0022
+04-29 19:35:29 <tempinfo> Epoch:  21 [6400/7000],     step: 100     11794.0 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0022
+04-29 19:35:29 <info> Epoch: 21,  Cost 0.6023 sec,  train-Acc: 99.7429,  train-Loss: 0.0088
+04-29 19:35:29 <info> Epoch: 21,  Cost 0.1042 sec,  val-Acc: 91.0667,  val-Loss: 0.2894
+04-29 19:35:29 -----Epoch 22/49-----
+04-29 19:35:29 current lr: [0.00064117]
+04-29 19:35:29 <tempinfo> Epoch:  22 [1280/7000],     step:  20     4768.4 samples/sec     0.0134 sec/batch     Train Acc: 99.30,  Train Loss: 0.0148
+04-29 19:35:29 <tempinfo> Epoch:  22 [2560/7000],     step:  40     11682.3 samples/sec     0.0055 sec/batch     Train Acc: 99.45,  Train Loss: 0.0158
+04-29 19:35:29 <tempinfo> Epoch:  22 [3840/7000],     step:  60     11141.2 samples/sec     0.0057 sec/batch     Train Acc: 99.69,  Train Loss: 0.0110
+04-29 19:35:29 <tempinfo> Epoch:  22 [5120/7000],     step:  80     11165.5 samples/sec     0.0057 sec/batch     Train Acc: 100.00,  Train Loss: 0.0024
+04-29 19:35:30 <tempinfo> Epoch:  22 [6400/7000],     step: 100     11866.2 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0026
+04-29 19:35:30 <info> Epoch: 22,  Cost 0.6111 sec,  train-Acc: 99.6857,  train-Loss: 0.0092
+04-29 19:35:30 <info> Epoch: 22,  Cost 0.1030 sec,  val-Acc: 98.4667,  val-Loss: 0.0585
+04-29 19:35:30 -----Epoch 23/49-----
+04-29 19:35:30 current lr: [0.00062835]
+04-29 19:35:30 <tempinfo> Epoch:  23 [1280/7000],     step:  20     4741.3 samples/sec     0.0135 sec/batch     Train Acc: 99.92,  Train Loss: 0.0024
+04-29 19:35:30 <tempinfo> Epoch:  23 [2560/7000],     step:  40     11946.6 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0012
+04-29 19:35:30 <tempinfo> Epoch:  23 [3840/7000],     step:  60     11733.1 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0033
+04-29 19:35:30 <tempinfo> Epoch:  23 [5120/7000],     step:  80     11743.0 samples/sec     0.0055 sec/batch     Train Acc: 99.77,  Train Loss: 0.0144
+04-29 19:35:30 <tempinfo> Epoch:  23 [6400/7000],     step: 100     11743.1 samples/sec     0.0054 sec/batch     Train Acc: 99.61,  Train Loss: 0.0172
+04-29 19:35:30 <info> Epoch: 23,  Cost 0.5990 sec,  train-Acc: 99.8429,  train-Loss: 0.0073
+04-29 19:35:30 <info> Epoch: 23,  Cost 0.1055 sec,  val-Acc: 98.7667,  val-Loss: 0.0580
+04-29 19:35:30 -----Epoch 24/49-----
+04-29 19:35:30 current lr: [0.00061578]
+04-29 19:35:30 <tempinfo> Epoch:  24 [1280/7000],     step:  20     4790.1 samples/sec     0.0134 sec/batch     Train Acc: 99.84,  Train Loss: 0.0113
+04-29 19:35:31 <tempinfo> Epoch:  24 [2560/7000],     step:  40     11534.3 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0023
+04-29 19:35:31 <tempinfo> Epoch:  24 [3840/7000],     step:  60     11610.9 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0041
+04-29 19:35:31 <tempinfo> Epoch:  24 [5120/7000],     step:  80     11522.2 samples/sec     0.0056 sec/batch     Train Acc: 99.84,  Train Loss: 0.0042
+04-29 19:35:31 <tempinfo> Epoch:  24 [6400/7000],     step: 100     11955.6 samples/sec     0.0054 sec/batch     Train Acc: 99.84,  Train Loss: 0.0058
+04-29 19:35:31 <info> Epoch: 24,  Cost 0.6041 sec,  train-Acc: 99.8714,  train-Loss: 0.0059
+04-29 19:35:31 <info> Epoch: 24,  Cost 0.1036 sec,  val-Acc: 98.7333,  val-Loss: 0.0667
+04-29 19:35:31 -----Epoch 25/49-----
+04-29 19:35:31 current lr: [0.00060346]
+04-29 19:35:31 <tempinfo> Epoch:  25 [1280/7000],     step:  20     4708.1 samples/sec     0.0136 sec/batch     Train Acc: 99.92,  Train Loss: 0.0022
+04-29 19:35:31 <tempinfo> Epoch:  25 [2560/7000],     step:  40     11425.9 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0023
+04-29 19:35:31 <tempinfo> Epoch:  25 [3840/7000],     step:  60     11228.0 samples/sec     0.0057 sec/batch     Train Acc: 99.84,  Train Loss: 0.0043
+04-29 19:35:32 <tempinfo> Epoch:  25 [5120/7000],     step:  80     11327.4 samples/sec     0.0056 sec/batch     Train Acc: 99.61,  Train Loss: 0.0062
+04-29 19:35:32 <tempinfo> Epoch:  25 [6400/7000],     step: 100     11613.9 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0039
+04-29 19:35:32 <info> Epoch: 25,  Cost 0.6157 sec,  train-Acc: 99.8429,  train-Loss: 0.0039
+04-29 19:35:32 <info> Epoch: 25,  Cost 0.1040 sec,  val-Acc: 99.0000,  val-Loss: 0.0444
+04-29 19:35:32 save best epoch 26, best acc 0.9900
+04-29 19:35:32 -----Epoch 26/49-----
+04-29 19:35:32 current lr: [0.0005914]
+04-29 19:35:32 <tempinfo> Epoch:  26 [1280/7000],     step:  20     4683.1 samples/sec     0.0137 sec/batch     Train Acc: 99.77,  Train Loss: 0.0036
+04-29 19:35:32 <tempinfo> Epoch:  26 [2560/7000],     step:  40     11907.5 samples/sec     0.0054 sec/batch     Train Acc: 99.84,  Train Loss: 0.0068
+04-29 19:35:32 <tempinfo> Epoch:  26 [3840/7000],     step:  60     11528.6 samples/sec     0.0056 sec/batch     Train Acc: 99.53,  Train Loss: 0.0213
+04-29 19:35:32 <tempinfo> Epoch:  26 [5120/7000],     step:  80     11743.1 samples/sec     0.0054 sec/batch     Train Acc: 99.69,  Train Loss: 0.0113
+04-29 19:35:32 <tempinfo> Epoch:  26 [6400/7000],     step: 100     11636.4 samples/sec     0.0055 sec/batch     Train Acc: 99.53,  Train Loss: 0.0133
+04-29 19:35:32 <info> Epoch: 26,  Cost 0.6074 sec,  train-Acc: 99.6857,  train-Loss: 0.0108
+04-29 19:35:33 <info> Epoch: 26,  Cost 0.1031 sec,  val-Acc: 98.6333,  val-Loss: 0.0606
+04-29 19:35:33 -----Epoch 27/49-----
+04-29 19:35:33 current lr: [0.00057957]
+04-29 19:35:33 <tempinfo> Epoch:  27 [1280/7000],     step:  20     4775.8 samples/sec     0.0134 sec/batch     Train Acc: 99.92,  Train Loss: 0.0054
+04-29 19:35:33 <tempinfo> Epoch:  27 [2560/7000],     step:  40     11728.7 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0022
+04-29 19:35:33 <tempinfo> Epoch:  27 [3840/7000],     step:  60     11962.6 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0036
+04-29 19:35:33 <tempinfo> Epoch:  27 [5120/7000],     step:  80     11488.5 samples/sec     0.0056 sec/batch     Train Acc: 99.92,  Train Loss: 0.0021
+04-29 19:35:33 <tempinfo> Epoch:  27 [6400/7000],     step: 100     11538.3 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0020
+04-29 19:35:33 <info> Epoch: 27,  Cost 0.6016 sec,  train-Acc: 99.9286,  train-Loss: 0.0038
+04-29 19:35:33 <info> Epoch: 27,  Cost 0.1051 sec,  val-Acc: 98.4000,  val-Loss: 0.0567
+04-29 19:35:33 -----Epoch 28/49-----
+04-29 19:35:33 current lr: [0.00056798]
+04-29 19:35:33 <tempinfo> Epoch:  28 [1280/7000],     step:  20     4717.9 samples/sec     0.0136 sec/batch     Train Acc: 100.00,  Train Loss: 0.0015
+04-29 19:35:33 <tempinfo> Epoch:  28 [2560/7000],     step:  40     12013.2 samples/sec     0.0053 sec/batch     Train Acc: 99.92,  Train Loss: 0.0024
+04-29 19:35:34 <tempinfo> Epoch:  28 [3840/7000],     step:  60     11664.7 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0028
+04-29 19:35:34 <tempinfo> Epoch:  28 [5120/7000],     step:  80     11850.7 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0013
+04-29 19:35:34 <tempinfo> Epoch:  28 [6400/7000],     step: 100     11617.3 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0023
+04-29 19:35:34 <info> Epoch: 28,  Cost 0.6006 sec,  train-Acc: 99.9429,  train-Loss: 0.0022
+04-29 19:35:34 <info> Epoch: 28,  Cost 0.1039 sec,  val-Acc: 98.6000,  val-Loss: 0.0556
+04-29 19:35:34 -----Epoch 29/49-----
+04-29 19:35:34 current lr: [0.00055662]
+04-29 19:35:34 <tempinfo> Epoch:  29 [1280/7000],     step:  20     4795.1 samples/sec     0.0133 sec/batch     Train Acc: 99.92,  Train Loss: 0.0019
+04-29 19:35:34 <tempinfo> Epoch:  29 [2560/7000],     step:  40     11636.3 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0020
+04-29 19:35:34 <tempinfo> Epoch:  29 [3840/7000],     step:  60     11510.5 samples/sec     0.0056 sec/batch     Train Acc: 99.84,  Train Loss: 0.0103
+04-29 19:35:34 <tempinfo> Epoch:  29 [5120/7000],     step:  80     11531.5 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0020
+04-29 19:35:34 <tempinfo> Epoch:  29 [6400/7000],     step: 100     11435.0 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:35 <info> Epoch: 29,  Cost 0.6079 sec,  train-Acc: 99.9429,  train-Loss: 0.0040
+04-29 19:35:35 <info> Epoch: 29,  Cost 0.1043 sec,  val-Acc: 98.3667,  val-Loss: 0.0574
+04-29 19:35:35 -----Epoch 30/49-----
+04-29 19:35:35 current lr: [0.00054548]
+04-29 19:35:35 <tempinfo> Epoch:  30 [1280/7000],     step:  20     4770.5 samples/sec     0.0134 sec/batch     Train Acc: 99.92,  Train Loss: 0.0020
+04-29 19:35:35 <tempinfo> Epoch:  30 [2560/7000],     step:  40     11840.7 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0012
+04-29 19:35:35 <tempinfo> Epoch:  30 [3840/7000],     step:  60     11496.9 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0015
+04-29 19:35:35 <tempinfo> Epoch:  30 [5120/7000],     step:  80     11795.7 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0062
+04-29 19:35:35 <tempinfo> Epoch:  30 [6400/7000],     step: 100     11475.0 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0010
+04-29 19:35:35 <info> Epoch: 30,  Cost 0.6008 sec,  train-Acc: 99.9714,  train-Loss: 0.0023
+04-29 19:35:35 <info> Epoch: 30,  Cost 0.1030 sec,  val-Acc: 98.6333,  val-Loss: 0.0539
+04-29 19:35:35 -----Epoch 31/49-----
+04-29 19:35:35 current lr: [0.00053457]
+04-29 19:35:35 <tempinfo> Epoch:  31 [1280/7000],     step:  20     4837.7 samples/sec     0.0132 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:36 <tempinfo> Epoch:  31 [2560/7000],     step:  40     11688.9 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0025
+04-29 19:35:36 <tempinfo> Epoch:  31 [3840/7000],     step:  60     11706.3 samples/sec     0.0055 sec/batch     Train Acc: 99.69,  Train Loss: 0.0081
+04-29 19:35:36 <tempinfo> Epoch:  31 [5120/7000],     step:  80     11879.6 samples/sec     0.0054 sec/batch     Train Acc: 99.69,  Train Loss: 0.0080
+04-29 19:35:36 <tempinfo> Epoch:  31 [6400/7000],     step: 100     11666.8 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0048
+04-29 19:35:36 <info> Epoch: 31,  Cost 0.5999 sec,  train-Acc: 99.8000,  train-Loss: 0.0049
+04-29 19:35:36 <info> Epoch: 31,  Cost 0.1040 sec,  val-Acc: 98.7667,  val-Loss: 0.0626
+04-29 19:35:36 -----Epoch 32/49-----
+04-29 19:35:36 current lr: [0.00052388]
+04-29 19:35:36 <tempinfo> Epoch:  32 [1280/7000],     step:  20     4720.4 samples/sec     0.0136 sec/batch     Train Acc: 99.84,  Train Loss: 0.0027
+04-29 19:35:36 <tempinfo> Epoch:  32 [2560/7000],     step:  40     11111.6 samples/sec     0.0058 sec/batch     Train Acc: 100.00,  Train Loss: 0.0019
+04-29 19:35:36 <tempinfo> Epoch:  32 [3840/7000],     step:  60     11053.0 samples/sec     0.0058 sec/batch     Train Acc: 100.00,  Train Loss: 0.0014
+04-29 19:35:37 <tempinfo> Epoch:  32 [5120/7000],     step:  80     11228.2 samples/sec     0.0057 sec/batch     Train Acc: 99.92,  Train Loss: 0.0074
+04-29 19:35:37 <tempinfo> Epoch:  32 [6400/7000],     step: 100     11633.7 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0016
+04-29 19:35:37 <info> Epoch: 32,  Cost 0.6216 sec,  train-Acc: 99.9571,  train-Loss: 0.0029
+04-29 19:35:37 <info> Epoch: 32,  Cost 0.1020 sec,  val-Acc: 98.5333,  val-Loss: 0.0573
+04-29 19:35:37 -----Epoch 33/49-----
+04-29 19:35:37 current lr: [0.00051341]
+04-29 19:35:37 <tempinfo> Epoch:  33 [1280/7000],     step:  20     4795.9 samples/sec     0.0133 sec/batch     Train Acc: 99.92,  Train Loss: 0.0018
+04-29 19:35:37 <tempinfo> Epoch:  33 [2560/7000],     step:  40     11411.3 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0012
+04-29 19:35:37 <tempinfo> Epoch:  33 [3840/7000],     step:  60     11531.6 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0020
+04-29 19:35:37 <tempinfo> Epoch:  33 [5120/7000],     step:  80     11686.9 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0012
+04-29 19:35:37 <tempinfo> Epoch:  33 [6400/7000],     step: 100     11458.1 samples/sec     0.0056 sec/batch     Train Acc: 99.77,  Train Loss: 0.0091
+04-29 19:35:37 <info> Epoch: 33,  Cost 0.6073 sec,  train-Acc: 99.9286,  train-Loss: 0.0029
+04-29 19:35:37 <info> Epoch: 33,  Cost 0.1063 sec,  val-Acc: 98.5667,  val-Loss: 0.0591
+04-29 19:35:37 -----Epoch 34/49-----
+04-29 19:35:37 current lr: [0.00050314]
+04-29 19:35:38 <tempinfo> Epoch:  34 [1280/7000],     step:  20     4696.7 samples/sec     0.0136 sec/batch     Train Acc: 99.61,  Train Loss: 0.0097
+04-29 19:35:38 <tempinfo> Epoch:  34 [2560/7000],     step:  40     11851.8 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0083
+04-29 19:35:38 <tempinfo> Epoch:  34 [3840/7000],     step:  60     11160.9 samples/sec     0.0057 sec/batch     Train Acc: 99.92,  Train Loss: 0.0033
+04-29 19:35:38 <tempinfo> Epoch:  34 [5120/7000],     step:  80     11604.0 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0022
+04-29 19:35:38 <tempinfo> Epoch:  34 [6400/7000],     step: 100     11234.4 samples/sec     0.0057 sec/batch     Train Acc: 99.84,  Train Loss: 0.0040
+04-29 19:35:38 <info> Epoch: 34,  Cost 0.6140 sec,  train-Acc: 99.8571,  train-Loss: 0.0056
+04-29 19:35:38 <info> Epoch: 34,  Cost 0.1030 sec,  val-Acc: 97.7333,  val-Loss: 0.0851
+04-29 19:35:38 -----Epoch 35/49-----
+04-29 19:35:38 current lr: [0.00049307]
+04-29 19:35:38 <tempinfo> Epoch:  35 [1280/7000],     step:  20     4735.6 samples/sec     0.0135 sec/batch     Train Acc: 99.84,  Train Loss: 0.0068
+04-29 19:35:38 <tempinfo> Epoch:  35 [2560/7000],     step:  40     11725.9 samples/sec     0.0055 sec/batch     Train Acc: 99.45,  Train Loss: 0.0156
+04-29 19:35:39 <tempinfo> Epoch:  35 [3840/7000],     step:  60     11569.1 samples/sec     0.0055 sec/batch     Train Acc: 99.61,  Train Loss: 0.0093
+04-29 19:35:39 <tempinfo> Epoch:  35 [5120/7000],     step:  80     11823.8 samples/sec     0.0054 sec/batch     Train Acc: 99.77,  Train Loss: 0.0095
+04-29 19:35:39 <tempinfo> Epoch:  35 [6400/7000],     step: 100     11665.6 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0057
+04-29 19:35:39 <info> Epoch: 35,  Cost 0.6070 sec,  train-Acc: 99.7429,  train-Loss: 0.0088
+04-29 19:35:39 <info> Epoch: 35,  Cost 0.1047 sec,  val-Acc: 98.5667,  val-Loss: 0.0767
+04-29 19:35:39 -----Epoch 36/49-----
+04-29 19:35:39 current lr: [0.00048321]
+04-29 19:35:39 <tempinfo> Epoch:  36 [1280/7000],     step:  20     4718.2 samples/sec     0.0136 sec/batch     Train Acc: 99.92,  Train Loss: 0.0033
+04-29 19:35:39 <tempinfo> Epoch:  36 [2560/7000],     step:  40     11758.1 samples/sec     0.0054 sec/batch     Train Acc: 99.69,  Train Loss: 0.0078
+04-29 19:35:39 <tempinfo> Epoch:  36 [3840/7000],     step:  60     11691.6 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0027
+04-29 19:35:39 <tempinfo> Epoch:  36 [5120/7000],     step:  80     11616.0 samples/sec     0.0055 sec/batch     Train Acc: 99.61,  Train Loss: 0.0077
+04-29 19:35:39 <tempinfo> Epoch:  36 [6400/7000],     step: 100     11491.7 samples/sec     0.0056 sec/batch     Train Acc: 99.69,  Train Loss: 0.0079
+04-29 19:35:40 <info> Epoch: 36,  Cost 0.6045 sec,  train-Acc: 99.7429,  train-Loss: 0.0059
+04-29 19:35:40 <info> Epoch: 36,  Cost 0.1020 sec,  val-Acc: 97.9000,  val-Loss: 0.0772
+04-29 19:35:40 -----Epoch 37/49-----
+04-29 19:35:40 current lr: [0.00047355]
+04-29 19:35:40 <tempinfo> Epoch:  37 [1280/7000],     step:  20     4852.3 samples/sec     0.0132 sec/batch     Train Acc: 99.77,  Train Loss: 0.0124
+04-29 19:35:40 <tempinfo> Epoch:  37 [2560/7000],     step:  40     11632.5 samples/sec     0.0055 sec/batch     Train Acc: 99.61,  Train Loss: 0.0081
+04-29 19:35:40 <tempinfo> Epoch:  37 [3840/7000],     step:  60     11798.6 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0057
+04-29 19:35:40 <tempinfo> Epoch:  37 [5120/7000],     step:  80     11676.0 samples/sec     0.0055 sec/batch     Train Acc: 99.69,  Train Loss: 0.0078
+04-29 19:35:40 <tempinfo> Epoch:  37 [6400/7000],     step: 100     11849.3 samples/sec     0.0054 sec/batch     Train Acc: 99.84,  Train Loss: 0.0053
+04-29 19:35:40 <info> Epoch: 37,  Cost 0.5963 sec,  train-Acc: 99.7571,  train-Loss: 0.0078
+04-29 19:35:40 <info> Epoch: 37,  Cost 0.1047 sec,  val-Acc: 99.0000,  val-Loss: 0.0559
+04-29 19:35:40 save best epoch 38, best acc 0.9900
+04-29 19:35:40 -----Epoch 38/49-----
+04-29 19:35:40 current lr: [0.00046408]
+04-29 19:35:40 <tempinfo> Epoch:  38 [1280/7000],     step:  20     4792.3 samples/sec     0.0134 sec/batch     Train Acc: 99.84,  Train Loss: 0.0038
+04-29 19:35:41 <tempinfo> Epoch:  38 [2560/7000],     step:  40     11454.1 samples/sec     0.0056 sec/batch     Train Acc: 99.77,  Train Loss: 0.0072
+04-29 19:35:41 <tempinfo> Epoch:  38 [3840/7000],     step:  60     11531.6 samples/sec     0.0055 sec/batch     Train Acc: 99.77,  Train Loss: 0.0063
+04-29 19:35:41 <tempinfo> Epoch:  38 [5120/7000],     step:  80     11591.1 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0056
+04-29 19:35:41 <tempinfo> Epoch:  38 [6400/7000],     step: 100     11636.4 samples/sec     0.0055 sec/batch     Train Acc: 99.69,  Train Loss: 0.0106
+04-29 19:35:41 <info> Epoch: 38,  Cost 0.6093 sec,  train-Acc: 99.8143,  train-Loss: 0.0063
+04-29 19:35:41 <info> Epoch: 38,  Cost 0.1051 sec,  val-Acc: 98.5333,  val-Loss: 0.0593
+04-29 19:35:41 -----Epoch 39/49-----
+04-29 19:35:41 current lr: [0.0004548]
+04-29 19:35:41 <tempinfo> Epoch:  39 [1280/7000],     step:  20     4649.3 samples/sec     0.0138 sec/batch     Train Acc: 99.84,  Train Loss: 0.0045
+04-29 19:35:41 <tempinfo> Epoch:  39 [2560/7000],     step:  40     11093.6 samples/sec     0.0058 sec/batch     Train Acc: 99.92,  Train Loss: 0.0017
+04-29 19:35:41 <tempinfo> Epoch:  39 [3840/7000],     step:  60     11428.5 samples/sec     0.0056 sec/batch     Train Acc: 99.92,  Train Loss: 0.0045
+04-29 19:35:41 <tempinfo> Epoch:  39 [5120/7000],     step:  80     11528.6 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0012
+04-29 19:35:42 <tempinfo> Epoch:  39 [6400/7000],     step: 100     11766.8 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0016
+04-29 19:35:42 <info> Epoch: 39,  Cost 0.6143 sec,  train-Acc: 99.9286,  train-Loss: 0.0026
+04-29 19:35:42 <info> Epoch: 39,  Cost 0.1020 sec,  val-Acc: 98.8667,  val-Loss: 0.0568
+04-29 19:35:42 -----Epoch 40/49-----
+04-29 19:35:42 current lr: [0.0004457]
+04-29 19:35:42 <tempinfo> Epoch:  40 [1280/7000],     step:  20     4790.8 samples/sec     0.0134 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:42 <tempinfo> Epoch:  40 [2560/7000],     step:  40     11636.4 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:42 <tempinfo> Epoch:  40 [3840/7000],     step:  60     11935.8 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0026
+04-29 19:35:42 <tempinfo> Epoch:  40 [5120/7000],     step:  80     11531.5 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:42 <tempinfo> Epoch:  40 [6400/7000],     step: 100     11069.4 samples/sec     0.0058 sec/batch     Train Acc: 100.00,  Train Loss: 0.0009
+04-29 19:35:42 <info> Epoch: 40,  Cost 0.6112 sec,  train-Acc: 99.9714,  train-Loss: 0.0022
+04-29 19:35:42 <info> Epoch: 40,  Cost 0.1029 sec,  val-Acc: 98.9667,  val-Loss: 0.0493
+04-29 19:35:42 -----Epoch 41/49-----
+04-29 19:35:42 current lr: [0.00043679]
+04-29 19:35:43 <tempinfo> Epoch:  41 [1280/7000],     step:  20     4438.3 samples/sec     0.0144 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:43 <tempinfo> Epoch:  41 [2560/7000],     step:  40     10432.0 samples/sec     0.0061 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:43 <tempinfo> Epoch:  41 [3840/7000],     step:  60     11514.5 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:43 <tempinfo> Epoch:  41 [5120/7000],     step:  80     11735.0 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0019
+04-29 19:35:43 <tempinfo> Epoch:  41 [6400/7000],     step: 100     11330.3 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0015
+04-29 19:35:43 <info> Epoch: 41,  Cost 0.6403 sec,  train-Acc: 99.9857,  train-Loss: 0.0011
+04-29 19:35:43 <info> Epoch: 41,  Cost 0.1037 sec,  val-Acc: 98.9333,  val-Loss: 0.0470
+04-29 19:35:43 -----Epoch 42/49-----
+04-29 19:35:43 current lr: [0.00042805]
+04-29 19:35:43 <tempinfo> Epoch:  42 [1280/7000],     step:  20     4726.1 samples/sec     0.0135 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:43 <tempinfo> Epoch:  42 [2560/7000],     step:  40     11530.6 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:44 <tempinfo> Epoch:  42 [3840/7000],     step:  60     11743.1 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0009
+04-29 19:35:44 <tempinfo> Epoch:  42 [5120/7000],     step:  80     11649.9 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0005
+04-29 19:35:44 <tempinfo> Epoch:  42 [6400/7000],     step: 100     11903.1 samples/sec     0.0054 sec/batch     Train Acc: 99.84,  Train Loss: 0.0058
+04-29 19:35:44 <info> Epoch: 42,  Cost 0.6030 sec,  train-Acc: 99.9714,  train-Loss: 0.0017
+04-29 19:35:44 <info> Epoch: 42,  Cost 0.1030 sec,  val-Acc: 98.8667,  val-Loss: 0.0517
+04-29 19:35:44 -----Epoch 43/49-----
+04-29 19:35:44 current lr: [0.00041949]
+04-29 19:35:44 <tempinfo> Epoch:  43 [1280/7000],     step:  20     4800.8 samples/sec     0.0133 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:44 <tempinfo> Epoch:  43 [2560/7000],     step:  40     11888.1 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0010
+04-29 19:35:44 <tempinfo> Epoch:  43 [3840/7000],     step:  60     11532.2 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0006
+04-29 19:35:44 <tempinfo> Epoch:  43 [5120/7000],     step:  80     11561.0 samples/sec     0.0055 sec/batch     Train Acc: 99.84,  Train Loss: 0.0052
+04-29 19:35:44 <tempinfo> Epoch:  43 [6400/7000],     step: 100     11582.7 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0014
+04-29 19:35:45 <info> Epoch: 43,  Cost 0.6021 sec,  train-Acc: 99.9714,  train-Loss: 0.0018
+04-29 19:35:45 <info> Epoch: 43,  Cost 0.1035 sec,  val-Acc: 98.9667,  val-Loss: 0.0428
+04-29 19:35:45 -----Epoch 44/49-----
+04-29 19:35:45 current lr: [0.0004111]
+04-29 19:35:45 <tempinfo> Epoch:  44 [1280/7000],     step:  20     4810.2 samples/sec     0.0133 sec/batch     Train Acc: 99.92,  Train Loss: 0.0020
+04-29 19:35:45 <tempinfo> Epoch:  44 [2560/7000],     step:  40     12190.4 samples/sec     0.0053 sec/batch     Train Acc: 99.92,  Train Loss: 0.0051
+04-29 19:35:45 <tempinfo> Epoch:  44 [3840/7000],     step:  60     11531.6 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0018
+04-29 19:35:45 <tempinfo> Epoch:  44 [5120/7000],     step:  80     11860.3 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0013
+04-29 19:35:45 <tempinfo> Epoch:  44 [6400/7000],     step: 100     11503.9 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:45 <info> Epoch: 44,  Cost 0.5992 sec,  train-Acc: 99.9571,  train-Loss: 0.0030
+04-29 19:35:45 <info> Epoch: 44,  Cost 0.1020 sec,  val-Acc: 98.9000,  val-Loss: 0.0510
+04-29 19:35:45 -----Epoch 45/49-----
+04-29 19:35:45 current lr: [0.00040288]
+04-29 19:35:45 <tempinfo> Epoch:  45 [1280/7000],     step:  20     4798.6 samples/sec     0.0133 sec/batch     Train Acc: 99.92,  Train Loss: 0.0018
+04-29 19:35:46 <tempinfo> Epoch:  45 [2560/7000],     step:  40     11745.5 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:46 <tempinfo> Epoch:  45 [3840/7000],     step:  60     11531.5 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:46 <tempinfo> Epoch:  45 [5120/7000],     step:  80     11476.9 samples/sec     0.0056 sec/batch     Train Acc: 99.84,  Train Loss: 0.0083
+04-29 19:35:46 <tempinfo> Epoch:  45 [6400/7000],     step: 100     11614.3 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0027
+04-29 19:35:46 <info> Epoch: 45,  Cost 0.6045 sec,  train-Acc: 99.9286,  train-Loss: 0.0031
+04-29 19:35:46 <info> Epoch: 45,  Cost 0.1032 sec,  val-Acc: 98.6000,  val-Loss: 0.0507
+04-29 19:35:46 -----Epoch 46/49-----
+04-29 19:35:46 current lr: [0.00039482]
+04-29 19:35:46 <tempinfo> Epoch:  46 [1280/7000],     step:  20     4762.0 samples/sec     0.0134 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:46 <tempinfo> Epoch:  46 [2560/7000],     step:  40     11465.3 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0014
+04-29 19:35:46 <tempinfo> Epoch:  46 [3840/7000],     step:  60     11129.5 samples/sec     0.0058 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:46 <tempinfo> Epoch:  46 [5120/7000],     step:  80     11352.7 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:47 <tempinfo> Epoch:  46 [6400/7000],     step: 100     11429.0 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:47 <info> Epoch: 46,  Cost 0.6158 sec,  train-Acc: 99.9714,  train-Loss: 0.0019
+04-29 19:35:47 <info> Epoch: 46,  Cost 0.1038 sec,  val-Acc: 98.8000,  val-Loss: 0.0545
+04-29 19:35:47 -----Epoch 47/49-----
+04-29 19:35:47 current lr: [0.00038692]
+04-29 19:35:47 <tempinfo> Epoch:  47 [1280/7000],     step:  20     4758.0 samples/sec     0.0135 sec/batch     Train Acc: 99.84,  Train Loss: 0.0045
+04-29 19:35:47 <tempinfo> Epoch:  47 [2560/7000],     step:  40     11327.3 samples/sec     0.0057 sec/batch     Train Acc: 99.77,  Train Loss: 0.0064
+04-29 19:35:47 <tempinfo> Epoch:  47 [3840/7000],     step:  60     11630.9 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0019
+04-29 19:35:47 <tempinfo> Epoch:  47 [5120/7000],     step:  80     11849.0 samples/sec     0.0054 sec/batch     Train Acc: 99.84,  Train Loss: 0.0049
+04-29 19:35:47 <tempinfo> Epoch:  47 [6400/7000],     step: 100     11743.1 samples/sec     0.0055 sec/batch     Train Acc: 99.92,  Train Loss: 0.0026
+04-29 19:35:47 <info> Epoch: 47,  Cost 0.6061 sec,  train-Acc: 99.8857,  train-Loss: 0.0039
+04-29 19:35:47 <info> Epoch: 47,  Cost 0.1019 sec,  val-Acc: 98.4000,  val-Loss: 0.0582
+04-29 19:35:47 -----Epoch 48/49-----
+04-29 19:35:47 current lr: [0.00037919]
+04-29 19:35:48 <tempinfo> Epoch:  48 [1280/7000],     step:  20     4741.0 samples/sec     0.0135 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:48 <tempinfo> Epoch:  48 [2560/7000],     step:  40     11904.6 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:48 <tempinfo> Epoch:  48 [3840/7000],     step:  60     11376.0 samples/sec     0.0056 sec/batch     Train Acc: 100.00,  Train Loss: 0.0009
+04-29 19:35:48 <tempinfo> Epoch:  48 [5120/7000],     step:  80     11728.4 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:48 <tempinfo> Epoch:  48 [6400/7000],     step: 100     11789.7 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0006
+04-29 19:35:48 <info> Epoch: 48,  Cost 0.6059 sec,  train-Acc: 99.9857,  train-Loss: 0.0011
+04-29 19:35:48 <info> Epoch: 48,  Cost 0.1124 sec,  val-Acc: 98.6667,  val-Loss: 0.0527
+04-29 19:35:48 -----Epoch 49/49-----
+04-29 19:35:48 current lr: [0.0003716]
+04-29 19:35:48 <tempinfo> Epoch:  49 [1280/7000],     step:  20     4646.3 samples/sec     0.0138 sec/batch     Train Acc: 100.00,  Train Loss: 0.0008
+04-29 19:35:48 <tempinfo> Epoch:  49 [2560/7000],     step:  40     11782.8 samples/sec     0.0054 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:49 <tempinfo> Epoch:  49 [3840/7000],     step:  60     11743.1 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0007
+04-29 19:35:49 <tempinfo> Epoch:  49 [5120/7000],     step:  80     11720.6 samples/sec     0.0055 sec/batch     Train Acc: 100.00,  Train Loss: 0.0011
+04-29 19:35:49 <tempinfo> Epoch:  49 [6400/7000],     step: 100     11869.0 samples/sec     0.0054 sec/batch     Train Acc: 99.92,  Train Loss: 0.0029
+04-29 19:35:49 <info> Epoch: 49,  Cost 0.5966 sec,  train-Acc: 99.9857,  train-Loss: 0.0012
+04-29 19:35:49 <info> Epoch: 49,  Cost 0.1020 sec,  val-Acc: 98.7667,  val-Loss: 0.0522
+04-29 19:35:49 save final epoch 50, final acc 0.9877
+04-29 19:35:49 max train acc in epoch 42:   0.999857
+04-29 19:35:49 max val acc in epoch 26:   0.990000
+04-29 19:35:49 final train acc: 0.999857
+04-29 19:35:49  final val acc: 0.987667
+04-29 19:35:49 
+04-29 19:35:49 <training time>: 36.083
