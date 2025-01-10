@@ -7,7 +7,7 @@ import numpy as np
 import torch
 
 from analysis.ana_utils import transform
-from utils.plot_func import setdefault
+from utils.plot_func import setdefault,get_plot_params,color_modify_HSV
 
 setdefault()
 
@@ -76,7 +76,7 @@ def ShapValue_reshape(shap_values, data):
 # ------------------------------    time   ------------------------------
 def func_trans_time(patch_mode: str = '1'):
     name = 'time'
-    patch_mp = dict(zip(['1', '2', '3', '4','5'],
+    patch_mp = dict(zip(['1', '2', '3', '4', '5'],
                         [(3,), (6,), (12,), (24,), (48,)]))  # (1,) | (3,)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
@@ -96,7 +96,7 @@ def func_trans_time(patch_mode: str = '1'):
 # ------------------------------ frequency ------------------------------
 def func_trans_frequency(patch_mode: str = '1'):
     name = 'frequency'
-    patch_mp = dict(zip(['1', '2', '3', '4','5'],
+    patch_mp = dict(zip(['1', '2', '3', '4', '5'],
                         [(3,), (6,), (12,), (24,), (48,)]))  # (1,) | (3,)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
@@ -113,10 +113,11 @@ def func_trans_frequency(patch_mode: str = '1'):
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
-def func_trans_frequency_v2(patch_mode: str = '1'): # 2024/12/14 增加了De_angle
+
+def func_trans_frequency_v2(patch_mode: str = '1'):  # 2024/12/14 增加了De_angle
     name = 'frequency'
-    patch_mp = dict(zip(['1', '2', '3', '4','5'],
-                        [(3,), (6,), (12,), (24,), (48,)]))  # (1,) | (3,)
+    patch_mp = dict(zip(['0','1', '2', '3', '4', '5'],
+                        [(1,), (3,), (6,), (12,), (24,), (48,)]))  # (1,) | (3,)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
     p = patch_mp[str(patch_mode)]
@@ -135,11 +136,12 @@ def func_trans_frequency_v2(patch_mode: str = '1'): # 2024/12/14 增加了De_ang
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
+
 # ------------------------------ envelope ------------------------------
 def func_trans_envelope(patch_mode: str = '1'):
     name = 'envelope'
     patch_mp = dict(zip(['1', '2', '3', '4', '5'],
-                        [(1,), (2,), (4,), (8,), (16,),]))  # (1,) | (3,)
+                        [(1,), (2,), (4,), (8,), (16,), ]))  # (1,) | (3,)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
     p = patch_mp[str(patch_mode)]
@@ -160,10 +162,11 @@ def func_trans_envelope(patch_mode: str = '1'):
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
+
 def func_trans_envelope_v2(patch_mode: str = '1'):
     name = 'envelope'
-    patch_mp = dict(zip(['1', '2', '3', '4', '5'],
-                        [(1,), (2,), (4,), (8,), (16,),]))  # (1,) | (3,)
+    patch_mp = dict(zip(['0', '1', '2', '3', '4', '5'],
+                        [(1,), (1,), (2,), (4,), (8,), (16,), ]))  # (1,) | (3,)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
     p = patch_mp[str(patch_mode)]
@@ -184,6 +187,7 @@ def func_trans_envelope_v2(patch_mode: str = '1'):
         return pick(out_data), pick(out_value)
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
+
 
 # ------------------------------    STFT   ------------------------------
 def func_trans_STFT(patch_mode: str = '1'):
@@ -209,9 +213,10 @@ def func_trans_STFT(patch_mode: str = '1'):
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
+
 def func_trans_STFT_v2(patch_mode: str = '1'):
-    patch_mp = dict(zip(['1', '2', '3', '4', '5'],
-                        [(1, 5), (2, 5), (2, 10), (4, 10), (4, 20)]))  # (1,5) | (1,10)
+    patch_mp = dict(zip(['0', '1', '2', '3', '4', '5'],
+                        [(1,2), (1, 5), (2, 5), (2, 10), (4, 10), (4, 20)]))  # (1,5) | (1,10)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
     p = patch_mp[str(patch_mode)]
@@ -219,7 +224,7 @@ def func_trans_STFT_v2(patch_mode: str = '1'):
     name = 'STFT'
     trans_series = transform.trans_Series(
         [trans_stft,
-         transform.trans_De_angle(de_mean=False), # 2024/12/14 de_mean=False
+         transform.trans_De_angle(de_mean=False),  # 2024/12/14 de_mean=False
          transform.trans_Patch(p=p),
          transform.trans_Object_Combine()])
     func_Z = trans_series.forward
@@ -232,6 +237,7 @@ def func_trans_STFT_v2(patch_mode: str = '1'):
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
+
 def func_trans_CS(patch_mode: str = '1'):  # 2024/11/23 STFT^2 -> CSCoh | de_mean=False
     '''
     return:
@@ -241,7 +247,7 @@ def func_trans_CS(patch_mode: str = '1'):  # 2024/11/23 STFT^2 -> CSCoh | de_mea
     trans_dict: {'name':.,'trans_series':.}
     '''
     patch_mp = dict(zip(['1', '2', '3', '4', '5'],
-                        [(1, 3), (2, 3), (2, 6), (4, 6),(4, 12),]))  # (1,3)
+                        [(1, 3), (2, 3), (2, 6), (4, 6), (4, 12), ]))  # (1,3)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
     p = patch_mp[str(patch_mode)]
@@ -264,6 +270,7 @@ def func_trans_CS(patch_mode: str = '1'):  # 2024/11/23 STFT^2 -> CSCoh | de_mea
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
+
 def func_trans_CS_v2(patch_mode: str = '1'):  # 2024/11/23 STFT^2 -> CSCoh | de_mean=False
     '''
     return:
@@ -272,8 +279,8 @@ def func_trans_CS_v2(patch_mode: str = '1'):  # 2024/11/23 STFT^2 -> CSCoh | de_
     func_unpatch: data [,shape] = func_unpatch(data [,shape]), unpatch the patched data to the original domain
     trans_dict: {'name':.,'trans_series':.}
     '''
-    patch_mp = dict(zip(['1', '2', '3', '4', '5'],
-                        [(1, 3), (2, 3), (2, 6), (4, 6),(4, 12),]))  # (1,3)
+    patch_mp = dict(zip(['0', '1', '2', '3', '4', '5'],
+                        [(1,1), (1, 3), (2, 3), (2, 6), (4, 6), (4, 12), ]))  # (1,3)
     if patch_mode not in patch_mp:
         raise ValueError(f'patch_mode should be in {patch_mp.keys()}')
     p = patch_mp[str(patch_mode)]
@@ -297,8 +304,9 @@ def func_trans_CS_v2(patch_mode: str = '1'):  # 2024/11/23 STFT^2 -> CSCoh | de_
 
     return func_Z, func_Z_inv, func_unpatch, {'name': name, 'trans_series': trans_series}
 
-def attr_visualization(savedir,  mode, Fs, signals, data, value,
-                       label_predicts, label_name, patch_mode='1',dpi=300,
+
+def attr_visualization(savedir, mode, Fs, signals, data, value,
+                       label_predicts, label_name, patch_mode='1', dpi=300,
                        **kwargs):
     '''
     :param savedir: str
@@ -320,7 +328,7 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
 
     # 1) prepare value xyz
     if mode in ['CAM', 'time', 'frequency', 'envelope']:  # 1D
-        dimension=1 # 1D
+        dimension = 1  # 1D
         if mode in ['CAM', 'time']:  # time
             x, xlabel = np.arange(data.shape[-1]) / Fs, 'Time $t$ (s)'
         else:  # frequency
@@ -342,11 +350,11 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
             x = (np.arange(data.shape[-1]) - pad // 2) / Fs * STFT_params['hop']
             xlabel = 'Time $t$ (s)'
         else:  # CS
-            data[..., 0:1] = data[..., 0:1] * 0.5  # remove the DC component in axis-a
+            data[..., 0:1] = data[..., 0:1] * 0.3  # remove the DC component in axis-a
             temp_len = value.shape[-1] * 2 - 1  # the length of the original time axis
             x = (np.arange(temp_len) / temp_len)[:value.shape[-1]] * Fs / STFT_params['hop']
             xlabel = r'$\alpha$ (Hz)'
-        plot_params = {'x': x, 'y': y, 'Z_base': data,'Zs': value,
+        plot_params = {'x': x, 'y': y, 'Z_base': data, 'Zs': value,
                        'xlabel': xlabel, 'ylabel': ylabel}
     else:
         raise ValueError(f'mode should be in [CAM, time, frequency, envelope, STFT, CS]')
@@ -355,8 +363,8 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
     N, K = data.shape[0], value.shape[0]
     prob = torch.nn.functional.softmax(torch.tensor(label_predicts[1]), -1).numpy()
     dimension_scale = 1.5 if dimension == 1 else 2
-    figsize = ((K+1)*2 / 2.54, N*dimension_scale*0.9 / 2.54)
-    gs = mpl.gridspec.GridSpec(N, K+1,hspace=1)
+    figsize = ((K + 1) * 2 / 2.54, N * dimension_scale * 0.9 / 2.54)
+    gs = mpl.gridspec.GridSpec(N, K + 1, hspace=1)
 
     plt.close('all')
     fig = plt.figure(figsize=figsize, dpi=dpi)
@@ -381,13 +389,13 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
             ax.set_ylabel(ylabel[0])
 
         for n in range(N):
-            ys = Ys[:,n,...]
+            ys = Ys[:, n, ...]
             ylim = (1.1 * ys.min() - 0.1 * ys.max(), 1.1 * ys.max() - 0.1 * ys.min())
             for k in range(K):
-                ax = Axes[n][k+1]
+                ax = Axes[n][k + 1]
                 ax.plot(x, ys[k], color='C1', alpha=0.8)  # mpl.rcParams['axes.prop_cycle'].by_key()['color'][1]
                 ax.margins(x=0.001)
-                ax.set_xlabel(xlabel+f' | {prob[n,k]*100:.2f}%')
+                ax.set_xlabel(xlabel + f' | {prob[n, k] * 100:.2f}%')
                 ax.set_ylim(ylim)
                 ax.set_ylabel(ylabel[1])
                 # value
@@ -399,7 +407,7 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
                 ax2.set_ylim(Axes[n][0].get_ylim())
 
     else:
-        x, y,Z_base,Zs = plot_params['x'], plot_params['y'], plot_params['Z_base'], plot_params['Zs']
+        x, y, Z_base, Zs = plot_params['x'], plot_params['y'], plot_params['Z_base'], plot_params['Zs']
         xlabel, ylabel = plot_params['xlabel'], plot_params['ylabel']
         # base
         for n in range(N):
@@ -409,12 +417,12 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
             ax.set_ylabel(ylabel)
 
         for n in range(N):
-            bound = max(abs(Zs[:,n].min()), abs(Zs[:,n].max()))
+            bound = max(abs(Zs[:, n].min()), abs(Zs[:, n].max()))
             for k in range(K):
-                ax = Axes[n][k+1]
-                ax.pcolormesh(x, y, Zs[k,n], cmap='bwr', shading='auto',
+                ax = Axes[n][k + 1]
+                ax.pcolormesh(x, y, Zs[k, n], cmap='bwr', shading='auto',
                               vmin=-bound, vmax=bound, rasterized=True)
-                ax.set_xlabel(xlabel+f' | {prob[n,k]*100:.2f}%')
+                ax.set_xlabel(xlabel + f' | {prob[n, k] * 100:.2f}%')
                 ax.set_ylabel(ylabel)
                 ax.set_xticks(Axes[n][0].get_xticks())
                 ax.set_yticks(Axes[n][0].get_yticks())
@@ -422,13 +430,118 @@ def attr_visualization(savedir,  mode, Fs, signals, data, value,
                 ax.set_ylim(Axes[n][0].get_ylim())
 
     gs.tight_layout(fig, pad=0.5, h_pad=0.5, w_pad=1.5, rect=None)
-    fig.savefig(os.path.join(savedir,'attribution.jpg'), dpi=dpi)
+    fig.savefig(os.path.join(savedir, 'attribution.jpg'), dpi=dpi)
     fig.savefig(os.path.join(savedir, 'attribution.pdf'))
 
 
+def data_visualization(datas, labels, labels_name, Fs, save_dir, data_name=None, dpi=600):
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    traget_path = os.path.join(save_dir, 'DataShow')
+    if os.path.exists(traget_path+'.jpg'): # avoid repeat
+        return
+    # 1) prepare data
+    label = sorted(list(set(labels)))
 
+    temp_map = {'Simulation':['H','F1','F2'],
+                'CWRU':['N','I','B','O'],
+                'HouDe2':['H','W','P','T']} # 'Simulation', 'CWRU', 'HouDe2'
+    if data_name and data_name in temp_map:
+        labels_name_new = temp_map[data_name]
+    else:
+        labels_name_new = labels_name
+    index = [labels.tolist().index(i) for i in label]
+    data = datas[index] # (N,t)
+    # 2) init
+    func_returns = func_trans_CS_v2()
+    trans_series = func_returns[-1]['trans_series']
+    out, info = trans_series.forward(data, verbose=True)
+    print('\n', '-' * 10)  # print('\n'.join(info))
+    func_env = func_trans_envelope_v2()[-1]['trans_series']
+    out_env, info_env = func_env.forward(data, verbose=True)
 
+    # obtain params
+    mfft, hop = trans_series[0].SFT.mfft, trans_series[0].SFT.hop
+    signals = data  # (N,t)
+    temp_fft = lambda x: np.abs(np.fft.fft(x - x.mean(), axis=-1)[..., :(x.shape[-1] // 2 + 1)] / x.shape[-1])
+    signals_freq = temp_fft(signals)  # (N,f)
+    signals_STFT = np.abs(out[1][-1])  # (N,f2,t2)
+    signals_CSCoh = np.abs(out[3][-1])  # (N,f2,a)
+    signals_CSCoh[..., 0] = signals_CSCoh[..., 0] * 0.5  # remove the DC component in axis-a
+    signals_env = np.abs(out_env[4][-1])  # (N,t)
 
+    # prepare data
+    t = np.arange(signals.shape[-1]) / Fs
+    f = np.arange(signals_freq.shape[-1]) * Fs / signals.shape[-1] * 1e-3
+    f1 = np.arange(signals_env.shape[1]) * Fs / signals.shape[-1]
+    f2 = np.arange(signals_STFT.shape[1]) * Fs / mfft * 1e-3
+    pad = signals_STFT.shape[-1] - signals.shape[-1] // hop
+    t2 = (np.arange(signals_STFT.shape[-1]) - (pad + 1) // 2) * hop / Fs
+    a = np.arange(signals_CSCoh.shape[-1]) / signals_STFT.shape[-1] * Fs / hop
+
+    # plot
+    setdefault(TrueType=True)
+    mpl.rcParams.update({'grid.color': '0.8', 'grid.alpha': 1, })
+    colors, markers, linestyles = get_plot_params()
+    N = signals.shape[0]
+    color_s, color_v,color_h_delta = np.linspace(0.3, 1, N), np.linspace(0.8, 0.4, N), np.linspace(-0.05, 0.08, N)
+    plt_colors = [color_modify_HSV(colors[0],s=s,v=v,h_delta=hd) for s,v,hd in zip(color_s,color_v,color_h_delta)][::-1]
+
+    # plot freq. & Env.
+    plt.close('all')
+    fig = plt.figure(figsize=[8.5 / 2.54, 4 / 2.54], dpi=dpi)
+    gs = mpl.gridspec.GridSpec(1,2)
+    for i, (x, Z, x_name) in enumerate(zip(
+            [f,f1], [signals_freq, signals_env],[r'Spectral freq. $f$ (Hz)', r'Spectral freq. $f$ (Hz)'])):
+        ax = fig.add_subplot(gs[i], projection='3d')
+        ax.view_init(elev=30,azim=-60) # 30,-60
+        ax.set_box_aspect([1, 1, 0.3])
+        X, Y = np.meshgrid(x, range(Z.shape[0]))
+        Lines = []
+        for k in range(Z.shape[0]):
+            temp = ax.plot_wireframe(X[k:k + 1], Y[k:k + 1], Z[k:k + 1],
+                                     rstride=1, cstride=0, lw=0.3,
+                                     color= plt_colors[k], alpha=1)
+            Lines.append(temp)
+        ax.tick_params('x', pad=-6.5)
+        ax.tick_params('y', pad=-6)
+        ax.tick_params('z', pad=-4.5)
+        for item in [ax.xaxis, ax.yaxis, ax.zaxis]:
+            item.set_pane_color((0.95, 0.95, 0.95, 0.2))
+            item._axinfo['tick'].update({'inward_factor': 0.3, 'outward_factor': 0})
+        ax.set_xlabel(x_name, labelpad=-15)
+        ax.set_yticks(range(len(labels_name_new)), labels_name_new)
+        ax.set_ylabel('Fault', labelpad=-15)
+    gs.tight_layout(fig, rect=[0, 0.02, 1, 1.01], h_pad=0.5, w_pad=4.5, pad=0.5)
+    for item in fig.get_children()[-2:]:
+        zlim = item.get_zticks()
+        while len(zlim)>5:
+            zlim = zlim[::2]
+        item.set_zticks(zlim)
+    fig.savefig(traget_path + '_pre.jpg', dpi=dpi)
+    fig.savefig(traget_path + '_pre.pdf', dpi=dpi)
+
+    # plot  STFT & CSCoh
+    plt.close('all')
+    K = data.shape[0]
+    fig = plt.figure(figsize=[8.5 / 2.54, 8.5/K*1.8 / 2.54], dpi=dpi)
+    gs = mpl.gridspec.GridSpec(2,K)
+    for i, (x, y, Z, x_name, y_name) in enumerate(zip(
+            [t2, a], [f2,f2], [signals_STFT, signals_CSCoh],
+            [r'Time $t$ (s)', r'Cyclic freq. $\alpha$ (Hz)'],
+            [r'Spectral freq. $f$ (kHz)', r'Spectral freq. $f$ (kHz)'])):
+        for j in range(Z.shape[0]):
+            ax = fig.add_subplot(gs[i, j:j+1])
+            im = ax.pcolormesh(x, y, Z[j], cmap='Blues', shading='gouraud', rasterized=True)
+            ax.set_xlabel(x_name)
+            ax.set_ylabel(y_name)
+            if i==1:
+                xlim = ax.get_xlim()
+                ax.set_xlim(1.007 * xlim[0] - 0.007 * xlim[1], xlim[1])
+    gs.tight_layout(fig, h_pad=1.5, w_pad=2, pad=0.5)
+    fig.savefig(traget_path + '.jpg', dpi=dpi)
+    fig.savefig(traget_path + '.pdf', dpi=dpi)
+    plt.close('all')
 
 if __name__ == '__main__':
     # 1) data
@@ -441,7 +554,7 @@ if __name__ == '__main__':
     for func in func_lists:
         func_Z, func_Z_inv, func_unpatch, trans_dict = func()
         print('\n', '--' * 15, ' ' * 2 + trans_dict['name'] + ' ' * 2, '--' * 15)
-        y,info = func_Z(inputs_ana, verbose=True)
+        y, info = func_Z(inputs_ana, verbose=True)
         y_inv = func_Z_inv(y[-1], verbose=True)
         print('mean error: ', abs(y_inv[-1] - inputs_ana).mean())
         data = y[-1]

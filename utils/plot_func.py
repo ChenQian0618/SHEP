@@ -43,8 +43,9 @@ def get_plot_params():
     markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', 'P', '*', 'h', 'H', 'X', 'd']
     linestyles = ['-', '--', '-.', ':']
     return colors, markers, linestyles
-def setdefault(ratio=1, fontsize=4):
+def setdefault(ratio=1, fontsize=4, TrueType=True):
     '''
+    mpl.rcParams: https://matplotlib.org/stable/users/explain/customizing.html
     {k:v for k,v in mpl.rcParams.items() if 'pad' in k}
     '''
 
@@ -62,6 +63,8 @@ def setdefault(ratio=1, fontsize=4):
     mpl.rcParams['lines.linewidth'] = 0.5 * ratio
 
     mpl.rcParams['font.family'] = 'Arial'  # 'Times New Roman' 'Arial'
+    mpl.rcParams['svg.fonttype'] = 'none'
+    mpl.rcParams['pdf.fonttype'] = 42 if TrueType else 3 # 42: TrueType, 3: Type 3
 
     mpl.rcParams['font.size'] = fontsize
     mpl.rcParams.update({'xtick.labelsize': mpl.rcParams['font.size'],
@@ -101,9 +104,12 @@ def setdefault(ratio=1, fontsize=4):
     mpl.rcParams.update({'axes.labelpad': 0.3 * ratio,
                          'axes.titlepad': 0.5 * ratio,})
 
+    mpl.rcParams.update({'hatch.linewidth': 0.2,
+                         'hatch.color': 'b'})
+
     # mpl.rcParams['text.usetex'] = True
     mpl.rcParams["mathtext.fontset"] = 'cm'
-    mpl.pyplot.switch_backend('tkagg')  # 'tkagg' 'Qt5Agg'
+    mpl.pyplot.switch_backend('tkagg')  # 'tkagg' 'Qt5Agg' 'pgf'
 
 
 def setaxesLW(myaxes, axes_lw=1, tick_len=3, tick_lw=None):
@@ -125,17 +131,31 @@ def plot_color(color=None):
     # mpl.pyplot.show()
     mpl.pyplot.tight_layout()
 
-def color_modify_HSV(rgb, h=0, s=0, v=0):
+def color_modify_HSV(rgb, h_ratio=0, s_ratio=0, v_ratio=0, h=None, s=None, v=None, h_delta=None, s_delta=None, v_delta=None):
     '''
     Modify the HSV of a RGB color.
     '''
     ratio_func = lambda x, r: (1-abs(r)) * x + abs(r) * int(r > 0) # -1->0, 0->x, 1->1
-
+    alpha=None
     rgb = np.array(rgb)
+    if rgb.shape[-1] == 4:
+        alpha = rgb[...,3:]
+        rgb = rgb[...,:3]
     hsv = mpl.colors.rgb_to_hsv(rgb)
-    for i,value in enumerate([h, s, v]):
+    # ratio
+    for i,value in enumerate([h_ratio, s_ratio, v_ratio]):
         hsv[...,i] = ratio_func(hsv[...,i], value)
+    # value
+    for i,value in enumerate([h, s, v]):
+        if value is not None:
+            hsv[...,i] = value
+    #delta
+    for i,value in enumerate([h_delta, s_delta, v_delta]):
+        if value is not None:
+            hsv[...,i] += value
     rgb = mpl.colors.hsv_to_rgb(hsv)
+    if alpha is not None:
+        rgb = np.concatenate([rgb, alpha], axis=-1)
     return rgb
 
 if __name__ == '__main__':

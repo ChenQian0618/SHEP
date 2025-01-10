@@ -32,10 +32,10 @@ def parse_args():
     # E:\6-数据集\0-机械故障诊断数据集\1-凯斯西储大学数据
     # E:\6-数据集\0-机械故障诊断数据集\9-厚德平行轴\振动响应\数据导出\斜齿轮
 
-    parser.add_argument('--data_name', type=str, default='Simulation', choices=['Simulation', 'CWRU', 'HouDe2'],
+    parser.add_argument('--data_name', type=str, default='HouDe2', choices=['Simulation', 'CWRU', 'HouDe2'],
                         help='the name of the data')
     parser.add_argument('--data_dir', type=str,
-                        default=r'.\checkpoint\Simulation_data',
+                        default=r'E:\6-数据集\0-机械故障诊断数据集\9-厚德平行轴\振动响应\数据导出\斜齿轮',
                         help='the directory of the data')
     parser.add_argument('--data_type', type=str, default='time', choices=['time', ], help='the name of the data')
     parser.add_argument('--normlizetype', type=str, default='mean-std', choices=['0-1', '-1-1', 'mean-std', 'none'],

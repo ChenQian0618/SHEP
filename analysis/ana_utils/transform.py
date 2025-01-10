@@ -555,7 +555,7 @@ class trans_Series(transform):
         :return:
         '''
         N = N if N is not None and type(N) == int else len(self.trans_list)
-        X = [x, ]
+        X = []
         info = []
         for i, trans in enumerate(self.trans_list[:N]):
             x = trans.forward(x)
@@ -578,7 +578,7 @@ class trans_Series(transform):
         :return:
         '''
         N = N if N is not None and type(N) == int else len(self.trans_list)
-        X = [x, ]
+        X = []
         info = []
         for i, trans in enumerate(self.trans_list[::-1][:N]):
             x = trans.backward(x)

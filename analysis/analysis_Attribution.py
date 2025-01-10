@@ -26,9 +26,9 @@ from ana_utils.utils_SHAP import func_trans_time, func_trans_frequency, func_tra
     func_trans_envelope
 from ana_utils.utils_SHAP import func_trans_frequency_v2, func_trans_STFT_v2, func_trans_CS_v2, \
     func_trans_envelope_v2
-from ana_utils.utils_SHAP import attr_visualization
+from ana_utils.utils_SHAP import attr_visualization,data_visualization
 from ana_utils.Attribution_methods import Attr_SHAP, Attr_Exchange, Attr_Exchange_v2, Attr_Exchange_v3, \
-    Attr_Mask, Attr_Scale
+    Attr_Mask, Attr_Scale, Attr_SHAP_dev
 from utils.PostProcessLib import ExtractInfo
 from utils.plot_func import setdefault
 
@@ -64,7 +64,7 @@ class Base_Analysis(object):
         if not fastmode:
             self._prediction_record()  # self.z, self.logits, self.prop, self.predict, self.misclassification, 做t-SNE分析和绘制混淆矩阵
 
-    def _get_all_data(self, flag_preload_dataset, Target_number=100):
+    def _get_all_data(self, flag_preload_dataset, Target_number=100, data_plot=True):
         print('------begin data load--------')
         phase = 'train' if self.data_train_not_val else 'val'
 
@@ -122,6 +122,11 @@ class Base_Analysis(object):
         Index = find_all_index_N(self.label, squeeze=False)[:, -5:].reshape(-1)
         self.inputs_bak = self.data[Index, ...]  # for SHAP analysis (as background)
         self.label_bak = self.label[Index, ...]
+
+        # analysis data visualization
+        if data_plot:
+            data_visualization(self.inputs_ana, self.labels_ana, self.label_name, self.Fs,
+                               os.path.join(self.save_dir, 'DataShow'),data_name=self.args['data_name'])
 
     def _model_load(self):
         # search
@@ -223,6 +228,7 @@ class Base_Analysis(object):
 
         # 0) attribution model
         attrModel_map = {'SHAP': Attr_SHAP,
+                         "SHAP_dev":Attr_SHAP_dev,
                          'Exchange': Attr_Exchange,
                          'Mask': Attr_Mask,
                          'Scale': Attr_Scale,
@@ -344,8 +350,8 @@ class Base_Analysis(object):
 
 
 if __name__ == '__main__':
-    temp_path = r'E:\OneDrive - sjtu.edu.cn\6-SoftwareFiles\GitFiles\0-个人库\03-科研\2024-PerturbationNet\checkpoint\Experiment'
-    temp_names = ['CNN-Simulation-time-SNR0-1211-215743']
+    temp_path = r'E:\OneDrive - sjtu.edu.cn\6-SoftwareFiles\GitFiles\0-个人库\03-科研\2024-PerturbationNet\checkpoint\ExpSimu'
+    temp_names = ['(Statistic)CNN-Simulation-time-SNR0-1211-215743']
 
     #
     # temp_path = r'..\checkpoint\test'
@@ -358,9 +364,9 @@ if __name__ == '__main__':
         base = Base_Analysis(dir=temp_dir, flag_preload_dataset=True, fastmode=True)
 
         #  ----------------------------attribution analysis------------------------------------------------
-        modes = ['frequency_v2', 'envelope_v2']  # 'time', 'frequency', 'envelope', 'STFT', 'CS', 'frequency_v2', 'envelope_v2', 'STFT_v2', 'CS_v2'
-        patch_modes = ['2','3','4','5']  # '1','2','3','4','5'
-        attr_names = ['SHAP',]  # 'SHAP', 'Exchange', 'Exchange_v2', 'Exchange_v3', 'Mask', 'Scale'
+        modes = ['frequency_v2', 'envelope_v2', 'STFT_v2', 'CS_v2']  # 'time', 'frequency', 'envelope', 'STFT', 'CS', 'frequency_v2', 'envelope_v2', 'STFT_v2', 'CS_v2'
+        patch_modes = ['0']  # '1','2','3','4','5'
+        attr_names = ['Exchange_v3',]  #  'Exchange', 'Exchange_v2', 'Exchange_v3', 'Mask', 'Scale','SHAP'
         for i, mode in enumerate(modes):
             for j, patch_mode in enumerate(patch_modes):
                 for k, attr_name in enumerate(attr_names):

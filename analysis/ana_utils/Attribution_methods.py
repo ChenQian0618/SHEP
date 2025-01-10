@@ -25,6 +25,48 @@ class Attr_SHAP(object):
                                           max_evals=self.max_evals)  # max(int(1e3), int(Z.shape[-1] * 10) // 2)
         return self.shap_values.values
 
+class Attr_SHAP_dev(object): # 用于按照background的值进行分类SHAP
+    def __init__(self, func_predict, background, save_dir=None, max_eval=0, **kwargs):
+        self.save_dir = save_dir
+        self.func_predict = func_predict
+        self.backgrounds,self.backlabels = self._background_group(func_predict, background) # (c, N, L), (c)
+        self.background_maskers = [MyIndependent(item) for item in self.backgrounds]
+        self.explainers = [shap.Explainer(func_predict, item, algorithm='permutation')
+                           for item in self.background_maskers]
+        if max_eval:
+            self.max_evals = max_eval
+        else:
+            self.max_evals = int(background.shape[-1] * 10) // 2
+    @staticmethod
+    def _background_group(func_predict, background):
+        label = np.argmax(func_predict(background),axis=-1)
+        res_sample,res_class = [],sorted(set(label))
+        for item in res_class:
+            res_sample.append(background[label == item])
+        return res_sample,res_class
+
+    def attribute(self, input, save_flag=True):
+        '''
+        :param input: (M, L)
+        :return:
+        '''
+        shap_values = []
+        for explainer in self.explainers:
+            shap_values.append(explainer(input,max_evals=self.max_evals).values)
+        shap_values = np.array(shap_values) # (c_b, M, L, c_p)
+        shap_values = shap_values.transpose([1,2,0,3]) # -> # (M, L, c_b, c)
+        plt.close('all')
+        fig, axs = plt.subplots(1, shap_values.shape[-1], figsize=[4, 1], dpi=600)
+        for i, ax in enumerate(axs):
+            ax.cla()
+            ax.plot(shap_values[-1, 1:, :, i])
+            ax.legend(['#1', '#2', '#3'])
+        fig.tight_layout()
+        if save_flag and self.save_dir:  # save the result for further analysis
+            savemat(os.path.join(self.save_dir, 'attribute_res.mat'),
+                    {'res': shap_values, 'res_info': 'res: (N, L, c_b, c)'})
+        return shap_values.mean(axis=-2)  # (M, L, c)
+
 
 class Attr_Exchange(object):
     def __init__(self, func_predict, background, save_dir=None, **kwargs):
