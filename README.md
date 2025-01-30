@@ -1,5 +1,5 @@
 # SHEP
-This is the open code of paper entitled **"CS-SHAP: Extending SHAP to "SHapley Estimated Explanation (SHEP): A Fast post-hoc attribution method for interpreting Intelligent Fault Diagnosis"**.
+This is the open code of paper entitled "Shapley Estimated Explanation (Shep): A Fast Post-Hoc Attribution Method for Interpreting Intelligent Fault Diagnosis"**.
 
 > Despite significant progress in intelligent fault diagnosis (IFD), the lack of interpretability remains a critical barrier to practical industrial applications, driving the growth of interpretability research in IFD. Post-hoc interpretability has gained popularity due to its ability to preserve network flexibility and scalability without modifying model structures. However, these methods often yield suboptimal time-domain explanations. Recently, combining domain transforms with SHAP has improved interpretability by extending explanations to more informative domains. Nonetheless, the computational expense of SHAP, exacerbated by increased dimensions from domain transforms, remains a major challenge.
 >
