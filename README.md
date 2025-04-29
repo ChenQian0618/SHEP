@@ -74,18 +74,19 @@ conda install pandas matplotlib seaborn openpyxl scipy=1.13.1 scikit-learn shap=
 ``` bash
 # step 0: set the python environment as above, and set current path to the project path
 
-# step 1: train the model (for simulation dataset)
+# step 1: train the model for simulation dataset
 python Demo/train.py --data_name 'Simulation'
 
-# step 1: train the model (for CWRU dataset), you need th set the CWRU directory
+# (step 1): Or train the model for CWRU dataset, but you need set the CWRU directory at the same time
 python Demo/train.py --data_name 'CWRU' --data_dir $CWRU_dir$  
 ```
 The result is located in `Demo/checkpoint/$checkpoint_name$`.
 
 **Step 2: conduct attribution analysis**:
 
-you can choose different **attribution-method** / **patch-level** / **domain** to analyse the `$checkpoint$` model.
+you can choose different **attribution-method** / **patch-level** / **domain** to analyse the model in `$checkpoint_name$`.
 ``` bash
+# step 2: You can conduct single attribution analysis
 # --domain_mode ['time', 'frequency', 'envelope', 'STFT', 'CS','all'], default is 'frequency'
 # --patch_mode ['0', '1', '2', '3', '4', '5'], the level of patch size where higher level means bigger patach and coarser granularity, default is '1'
 # --method ['SHEP', 'SHAP', 'SHEP_Remove', 'SHEP_Add'], default is 'SHEP'
@@ -96,6 +97,7 @@ The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attri
 
 **(Step 2): conduct and statistic attribution analysis**:
 ``` bash
+# (step 2): Or you can conduct full attribution analysis and statistic the results
 # --checkpoint_name, default is None which means the first $checkpoint_name$
 python Demo/Demo_attribution_statistic.py (--checkpoint_name $checkpoint_name$)
 ```
