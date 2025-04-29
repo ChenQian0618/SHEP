@@ -91,7 +91,8 @@ you can choose different **attribution-method** / **patch-level** / **domain** t
 # --patch_mode ['0', '1', '2', '3', '4', '5'], the level of patch size where higher level means bigger patach and coarser granularity, default is '1'
 # --method ['SHEP', 'SHAP', 'SHEP_Remove', 'SHEP_Add'], default is 'SHEP'
 # --checkpoint_name, default is None which means the first $checkpoint_name$
-python Demo/Demo_attribution.py (--domain_mode 'frequency' --patch_mode '1' --method 'SHEP' --checkpoint_name $checkpoint_name$)
+
+python Demo/Demo_attribution.py # --domain_mode 'frequency' --patch_mode '1' --method 'SHEP' --checkpoint_name $checkpoint_name$
 ```
 The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attribution_Analysis`.
 
@@ -99,7 +100,8 @@ The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attri
 ``` bash
 # (step 2): Or you can conduct full attribution analysis and statistic the results
 # --checkpoint_name, default is None which means the first $checkpoint_name$
-python Demo/Demo_attribution_statistic.py (--checkpoint_name $checkpoint_name$)
+
+python Demo/Demo_attribution_statistic.py # --checkpoint_name $checkpoint_name$
 ```
 The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attribution_Analysis/Stat`.
 
