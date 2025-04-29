@@ -19,11 +19,11 @@ from Demo.utils.DataModel_Loader import DataModel_Loader
 def parse_args():
     parser = argparse.ArgumentParser(description='Demo_analysis')
 
-    parser.add_argument('--checkpoint_root', type=str, default='./checkpoint', help='the name of the data')
+    parser.add_argument('--checkpoint_root', type=str, default='./checkpoint', help='the path of checkpoint')
     parser.add_argument('--checkpoint_name', type=str, default='None', help='specify the checkpoint name,  e.g., "CNN-Simulation-time-SNRNone-0413-191146"')
-    parser.add_argument('--domain_mode', type=str, default='frequency', choices=['all','time', 'frequency', 'envelope', 'STFT', 'CS'], help='the name of the data')
-    parser.add_argument('--patch_mode', type=str, default='1', choices=['0', '1', '2', '3', '4', '5'], help='the name of the data')
-    parser.add_argument('--method', type=str, default='SHEP', choices=['SHEP', 'SHAP', 'SHEP_Remove', 'SHEP_Add'], help='the name of the data')
+    parser.add_argument('--domain_mode', type=str, default='frequency', choices=['all','time', 'frequency', 'envelope', 'STFT', 'CS'], help='the domain mode of transform function')
+    parser.add_argument('--patch_mode', type=str, default='1', choices=['0', '1', '2', '3', '4', '5'], help='the patch level of transform function and high level means bigger patch size')
+    parser.add_argument('--method', type=str, default='SHEP', choices=['SHEP', 'SHAP', 'SHEP_Remove', 'SHEP_Add'], help='the attribution method')
 
     args = parser.parse_args()
     return args

@@ -21,8 +21,8 @@ import pandas as pd
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Demo_attribution_statistic')
-    parser.add_argument('--checkpoint_root', type=str, default='./checkpoint', help='the name of the data')
-    parser.add_argument('--checkpoint_name', type=str, default='CNN-Simulation-time-SNR0-new_data', help='specify the checkpoint name,  e.g., "CNN-Simulation-time-SNRNone-0413-191146"')
+    parser.add_argument('--checkpoint_root', type=str, default='./checkpoint', help='the path of checkpoint')
+    parser.add_argument('--checkpoint_name', type=str, default='None', help='specify the checkpoint name,  e.g., "CNN-Simulation-time-SNRNone-0413-191146"')
     args = parser.parse_args()
     return args
 
@@ -103,7 +103,7 @@ if __name__ == '__main__':
     checkpoint_root = args.checkpoint_root
     checkpoint_name = args.checkpoint_name
     # process checkpoint_name
-    if checkpoint_name == 'None': # if None, use the first one
+    if checkpoint_name.lower() == 'none': # if None, use the first one
         checkpoint_name = next(os.walk(checkpoint_root))[1][0]
     checkpoint_dir = os.path.join(checkpoint_root, checkpoint_name)
     print(f'checkpoint_name: "{checkpoint_name:s}"')

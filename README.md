@@ -8,18 +8,18 @@
 
 ### Notes
 * 2025-04-29: The code of **SHEP** with **full demo** under different **domains** and **patch sizes** is uploaded.
-* 2025-04-03: The preprint is available on [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773) .
+* 2025-04-03: The preprint is available on [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773).
 * 2025-01-15: We will upload our code after the paper is accepted.
 
 ## Repository Structure  
 ### Core Code  
-- **`SHAPs/MultiDomain_Attribution.py`**: Implementation of **multi-domain multi-method attribution** (**Time/Freq/Env/TF/CS** domain & **SHEP/SHAP** method).  
-- **`SHAPs/Attribution_methods.py`**: code of SHEP and SHAP. 
-- **`SHAPs/DomainTransform.py`**: Signal processing of domain transforms and **patch**-wsie attribution technique. 
-- **`SHAPs/utils_SHAP_MyIndependent.py`**: Modified SHAP utilities to support `numpy.ndarray` with `dtype=object`.
+- **`SHEPs/MultiDomain_Attribution.py`**: Implementation of **multi-domain multi-method attribution** (**Time/Freq/Env/TF/CS** domain & **SHEP/SHAP** method).  
+- **`SHEPs/Attribution_methods.py`**: code of SHEP and SHAP. 
+- **`SHEPs/DomainTransform.py`**: Signal processing of domain transforms and **patch**-wsie attribution technique. 
+- **`SHEPs/utils_SHAP_MyIndependent.py`**: Modified SHAP utilities to support `numpy.ndarray` with `dtype=object`.
 
 ### Demo Code  
-Besides, we also provide **Demo Code**  of the simulation dataset and CWRU dataset. Run the Demo, and you will get the same experimental results as descripted in the [paper](https://arxiv.org/abs/2502.06424).
+Besides, we also provide **Demo Code**  of the simulation dataset and CWRU dataset. Run the Demo, and you will get the same experimental results as descripted in  [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773).
 
 The repo structure is organized as follows:
 ```
@@ -30,7 +30,7 @@ The repo structure is organized as follows:
 │   ├── train.py                      # 1) training the NN model
 │   ├── Demo_attribution_statistic.py # 2) demo code of full attribution analysis and statistic the result
 │   └── Demo_attribution.py           # 2) demo code of single attribution analysis
-└── SHAPs
+└── SHEPs
     ├── Attribution_methods.py      # SHEP and SHAP
     ├── DomainTransform.py          # signal processing (high-level)
     ├── MultiDomain_Attribution.py  # the main file of multi-domain multi-method attribution analysis
@@ -128,15 +128,15 @@ Parameter settings:
   <tr>
     <td align="center">
       <strong>SHEP-Remove</strong><br>
-      <img src="./doc/frequency_1_SHEP_Remove_visualization.jpg" alt="Dataset presentation" width="100%">
+      <img src="./doc/frequency_1_SHEP_Remove_visualization.jpg" alt="SHEP-Remove" width="100%">
     </td>
-        <td  align="center"><strong>SHEP-Add</strong><br><img src="./doc/frequency_1_SHEP_Add_visualization.jpg" alt="Time-SHAP" width="100%"></td>
+        <td  align="center"><strong>SHEP-Add</strong><br><img src="./doc/frequency_1_SHEP_Add_visualization.jpg" alt="SHEP-Add" width="100%"></td>
 
   </tr>
 
   <tr>
-      <td  align="center"><strong>SHEP</strong><br><img src="./doc/frequency_1_SHEP_visualization.jpg" alt="Freq-SHAP" width="100%"></td>
-    <td  align="center"><strong>SHAP</strong><br><img src="./doc/frequency_1_SHAP_visualization.jpg" alt="Env-SHAP" width="100%"></td>
+      <td  align="center"><strong>SHEP</strong><br><img src="./doc/frequency_1_SHEP_visualization.jpg" alt="SHEP" width="100%"></td>
+    <td  align="center"><strong>SHAP</strong><br><img src="./doc/frequency_1_SHAP_visualization.jpg" alt="SHAP" width="100%"></td>
   </tr>
 </table>
 </html>
@@ -165,7 +165,7 @@ Parameter settings:
 <table style="width:100%; table-layout: fixed;">
     <td align="center">
       <strong>Attribution time of single sample</strong><br>
-      <img src="./doc/Attribution_time.jpg" alt="Attribution_time" width="100%">
+      <img src="./doc/Attribution_time.jpg" alt="Attribution-time" width="100%">
     </td>
 </table>
 </html>
@@ -189,4 +189,4 @@ Please cite our paper if our work is helpful to you:
 ## Contact and Related work
 
 * chenqian2020@sjtu.edu.cn & [Homepage of Qian Chen](https://chenqian0618.github.io/Homepage/);
-* CS-SHAP: ([paper](https://arxiv.org/abs/2502.06424) | [code](https://github.com/ChenQian0618/CS-SHAP)).
+* CS-SHAP: ([![arXiv](https://img.shields.io/badge/arXiv-2502.06424-b31b1b.svg)](https://arxiv.org/abs/2502.06424) | [code](https://github.com/ChenQian0618/CS-SHAP)).
