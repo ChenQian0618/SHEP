@@ -96,7 +96,7 @@ python Demo/Demo_attribution.py # --domain_mode 'frequency' --patch_mode '1' --m
 ```
 The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attribution_Analysis`.
 
-**(Step 2): conduct and statistic attribution analysis**:
+**(Step 2):conduct full attribution analysis and statistic the results**:
 ``` bash
 # (step 2): Or you can conduct full attribution analysis and statistic the results
 # --checkpoint_name, default is None which means the first $checkpoint_name$
