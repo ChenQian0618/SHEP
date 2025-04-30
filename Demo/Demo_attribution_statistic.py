@@ -124,9 +124,9 @@ if __name__ == '__main__':
     for i,domain_mode in enumerate(domain_modes):
         for j,patch_mode in enumerate(patch_modes):
             for k,method in enumerate(methods):
-                print('\n'*2, '-'*30, '{:^30s}'.format(f'({i+1:d}/{len(domain_modes):d}) current domain: {domain_mode:s}'), '-'*20)
+                print('\n'*2, '-'*30, '{:^30s}'.format(f'({i+1:d}/{len(domain_modes):d}) current domain: {domain_mode:s}'), '-'*30)
                 print(' '*5, '-'*25, '{:^30s}'.format(f'({j+1:d}/{len(patch_modes):d}) current patch: {patch_mode:s}'), '-'*25)
-                print(' '*10, '-'*20, '{:^30s}'.format(f'({k+1:d}/{len(methods):d}) current method: {method:s}'), '-'*30)
+                print(' '*10, '-'*20, '{:^30s}'.format(f'({k+1:d}/{len(methods):d}) current method: {method:s}'), '-'*20)
                 MD_Attribution.explain(input_data, input_label, domain_mode=domain_mode, patch_mode=patch_mode, method=method, preload=True, Fs=loader.Fs, plot=True) # do not plot the figure, just save the shap values
 
     
