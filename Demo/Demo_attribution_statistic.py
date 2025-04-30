@@ -88,7 +88,7 @@ def statistic(root, file_end='_raw.pkl', flag_SaveXlsx=False, preload=False):
     # plot 
     for patch in df['patch'].unique():
         plot_Similarity_Matrix(df.loc[df['patch'] == patch][['domain', 'method', 'SimiMatrix_pred_samp']],
-                               os.path.join(save_dir, f'Similarity_Matrix_p{patch:s}'), dpi=600)
+                               os.path.join(save_dir, f'Similarity_Matrix_patch{patch:s}'), dpi=600)
                                
     plot_Similarity_Box(df[['domain', 'method', 'patch','SimiMatrix_pred_samp']],
                             os.path.join(save_dir, 'Similarity_Box'), dpi=600)

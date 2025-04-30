@@ -105,6 +105,19 @@ python Demo/Demo_attribution_statistic.py # --checkpoint_name $checkpoint_name$
 ```
 The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attribution_Analysis/Stat`.
 
+**(Tips) patch size settings:**
+
+|          | **#0** | **#1** | **#2** | **#3**  | **#4**  | **#5**  |
+| :------: | :----: | :----: | :----: | :-----: | :-----: | :-----: |
+| **Time** |  (1,)  |  (3,)  |  (6,)  |  (12,)  |  (24,)  |  (48,)  |
+| **Freq** |  (1,)  |  (3,)  |  (6,)  |  (12,)  |  (24,)  |  (48,)  |
+| **Env**  |  (1,)  |  (1,)  |  (2,)  |  (4,)   |  (8,)   |  (16,)  |
+|  **TF**  | (1,2)  | (1,5)  | (2, 5) | (2, 10) | (4, 10) | (4, 20) |
+|  **CS**  | (1,1)  | (1,3)  | (2, 3) | (2, 6)  | (4, 6)  | (4, 12) |
+
+
+
+
 ## Results Preview of Simulation Dataset
 ### Dataset description
 Parameter settings:
@@ -125,7 +138,11 @@ Parameter settings:
 </table>
 </html>
 
-### Attribution visualization (Domain=frequency | Patch=#1)
+
+
+### Attribution visualization
+
+Domain=frequency | Patch=#1 ：
 
 <html>
 <table style="width:100%; table-layout: fixed;">
@@ -141,6 +158,25 @@ Parameter settings:
   <tr>
       <td  align="center"><strong>SHEP</strong><br><img src="./doc/frequency_1_SHEP_visualization.jpg" alt="SHEP" width="100%"></td>
     <td  align="center"><strong>SHAP</strong><br><img src="./doc/frequency_1_SHAP_visualization.jpg" alt="SHAP" width="100%"></td>
+  </tr>
+</table>
+</html>
+
+Domain=CS | Patch=#1 ：
+<html>
+<table style="width:100%; table-layout: fixed;">
+  <tr>
+    <td align="center">
+      <strong>SHEP-Remove</strong><br>
+      <img src="./doc/CS_1_SHEP_Remove_visualization.jpg" alt="SHEP-Remove" width="100%">
+    </td>
+        <td  align="center"><strong>SHEP-Add</strong><br><img src="./doc/CS_1_SHEP_Add_visualization.jpg" alt="SHEP-Add" width="100%"></td>
+
+  </tr>
+
+  <tr>
+      <td  align="center"><strong>SHEP</strong><br><img src="./doc/CS_1_SHEP_visualization.jpg" alt="SHEP" width="100%"></td>
+    <td  align="center"><strong>SHAP</strong><br><img src="./doc/CS_1_SHAP_visualization.jpg" alt="SHAP" width="100%"></td>
   </tr>
 </table>
 </html>
