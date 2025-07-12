@@ -122,7 +122,7 @@ The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attri
 ### Dataset description
 Parameter settings:
 
-| Component |    $f_c$ (kHz)     |      $f_m$ (kHz)      |    Health    |   Fault #1   |   Fault #2   |
+| Component |    $f_c$ (kHz)     |      $f_m$ (Hz)      |    Health    |   Fault #1   |   Fault #2   |
 | :-------: | :----------------: | :-------------------: | :----------: | :----------: | :----------: |
 |   $C_0$   |        1.5         |          50           | $\checkmark$ | $\checkmark$ | $\checkmark$ |
 |   $C_H$   | $\mathcal{U}(1,4)$ | $\mathcal{U}(20,200)$ | $\checkmark$ |              |              |
