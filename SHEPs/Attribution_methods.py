@@ -62,10 +62,10 @@ class Attr_SHEP_Remove(object):
             savemat(os.path.join(self.save_dir, 'attribute_res.mat'), {'res': res, 'res_info': 'res: (N, L, c_b, c)'})
         return res.mean(axis=-2)  # (M, L, c)
 
-    def explain_row(self, x):
-        return self._exchange_row(x, mode='U')
+    def explain_row(self, x, batch_size=128):
+        return self._exchange_row(x, mode='U', batch_size=batch_size)
 
-    def _exchange_row(self, x, mode='U'):
+    def _exchange_row(self, x, mode='U', batch_size=128):
         '''
         U - U/{i}
         :param x: (1, L)
@@ -93,7 +93,10 @@ class Attr_SHEP_Remove(object):
         for i, m in enumerate(mask):
             input_mask[i * N:(i + 1) * N, m] = self.background[:, m]
         # 4) predict
-        pred = self.func_predict(input_mask).reshape(L, N, -1)  # (L, N, c)
+        Res = []
+        for i in range(0, input_mask.shape[0], batch_size):
+            Res.append(self.func_predict(input_mask[i:i + batch_size, :]))
+        pred = np.vstack(Res).reshape(L, N, -1)  # (L, N, c)
         res = order * (base_value - pred)  # (L, N, c)
         res = res.reshape(L, res.shape[-1], -1, res.shape[-1])  # (L, c_b, N/c_b, c)
         res = res.mean(axis=-2)  # average over N-dim (background) (L, c_b, c): evaluate the impact of each patch based on each class background
@@ -101,12 +104,12 @@ class Attr_SHEP_Remove(object):
 
 
 class Attr_SHEP_Add(Attr_SHEP_Remove):
-    def explain_row(self, x):
-        return self._exchange_row(x, mode='O')
+    def explain_row(self, x, batch_size=128):
+        return self._exchange_row(x, mode='O', batch_size=batch_size)
 
 
 class Attr_SHEP(Attr_SHEP_Remove):
-    def explain_row(self, x):
+    def explain_row(self, x, batch_size=128):
         res = self._exchange_row(x, mode='O')
-        res += self._exchange_row(x, mode='U')
+        res += self._exchange_row(x, mode='U', batch_size=batch_size)
         return res / 2

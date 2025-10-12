@@ -7,6 +7,7 @@
 > To address this, we propose patch-wise attribution and SHapley Estimated Explanation (SHEP). Patch-wise attribution reduces feature dimensions at the cost of explanation granularity, while SHEP simplifies subset enumeration to approximate SHAP, reducing complexity from exponential to linear. Together, these methods significantly enhance SHAP's computational efficiency, providing feasibility for real-time interpretation in monitoring tasks. Extensive experiments confirm SHEP's efficiency, interpretability, and reliability in approximating SHAP. Additionally, with open-source code, SHEP has the potential to serve as a benchmark for post-hoc interpretability in IFD.
 
 ### Notes
+* 2025-10-12: modify `SHEPs\Attribution_methods.py` to save memory cost.
 * 2025-04-29: The code of **SHEP** with **full demo** under different **domains** and **patch sizes** is uploaded.
 * 2025-04-03: The preprint is available on [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773).
 * 2025-01-15: We will upload our code after the paper is accepted.
