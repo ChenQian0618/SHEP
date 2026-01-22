@@ -1,12 +1,13 @@
 # SHEP
 **Open-source implementation of the paper:**  
-*"SHapley Estimated exPlanation (SHEP): A Fast Post-Hoc Attribution Method for Interpreting Intelligent Fault Diagnosis"* [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773) 
+[*"Shapley estimated explanation: A fast post-hoc attribution method for interpreting intelligent mechanical fault diagnosis"*](https://linkinghub.elsevier.com/retrieve/pii/S0952197626002095) 
 
 > Despite significant progress in intelligent fault diagnosis (IFD), the lack of interpretability remains a critical barrier to practical industrial applications, driving the growth of interpretability research in IFD. Post-hoc interpretability has gained popularity due to its ability to preserve network flexibility and scalability without modifying model structures. However, these methods often yield suboptimal time-domain explanations. Recently, combining domain transforms with SHAP has improved interpretability by extending explanations to more informative domains. Nonetheless, the computational expense of SHAP, exacerbated by increased dimensions from domain transforms, remains a major challenge.
 >
 > To address this, we propose patch-wise attribution and SHapley Estimated Explanation (SHEP). Patch-wise attribution reduces feature dimensions at the cost of explanation granularity, while SHEP simplifies subset enumeration to approximate SHAP, reducing complexity from exponential to linear. Together, these methods significantly enhance SHAP's computational efficiency, providing feasibility for real-time interpretation in monitoring tasks. Extensive experiments confirm SHEP's efficiency, interpretability, and reliability in approximating SHAP. Additionally, with open-source code, SHEP has the potential to serve as a benchmark for post-hoc interpretability in IFD.
 
 ### Notes
+* 2026-01-23: The paper is published on [**Engineering Applications of Artificial Intelligence**](https://linkinghub.elsevier.com/retrieve/pii/S0952197626002095) .
 * 2025-04-29: The code of **SHEP** with **full demo** under different **domains** and **patch sizes** is uploaded.
 * 2025-04-03: The preprint is available on [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773).
 * 2025-01-15: We will upload our code after the paper is accepted.
@@ -214,14 +215,15 @@ Domain=CS | Patch=#1 ：
 ## Citation
 Please cite our paper if our work is helpful to you:
 ```
-@misc{chen2025shapleyestimatedexplanationshep,
-      title={SHapley Estimated Explanation (SHEP): A Fast Post-Hoc Attribution Method for Interpreting Intelligent Fault Diagnosis}, 
-      author={Qian Chen and Xingjian Dong and Zhike Peng and Guang Meng},
-      year={2025},
-      eprint={2504.03773},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2504.03773}, 
+@article{CHEN2026113928,
+title = {Shapley estimated explanation: A fast post-hoc attribution method for interpreting intelligent mechanical fault diagnosis},
+journal = {Engineering Applications of Artificial Intelligence},
+volume = {167},
+pages = {113928},
+year = {2026},
+issn = {0952-1976},
+doi = {https://doi.org/10.1016/j.engappai.2026.113928},
+author = {Qian Chen and Xingjian Dong and Shuai Gao and Jun Luo and Zhike Peng and Guang Meng},
 }
 ```
 
