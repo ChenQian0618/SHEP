@@ -8,6 +8,7 @@
 
 ### Notes
 * 2026-01-23: The paper is published on [**Engineering Applications of Artificial Intelligence**](https://linkinghub.elsevier.com/retrieve/pii/S0952197626002095) .
+* 2025-10-12: modify `SHEPs\Attribution_methods.py` to save memory cost.
 * 2025-04-29: The code of **SHEP** with **full demo** under different **domains** and **patch sizes** is uploaded.
 * 2025-04-03: The preprint is available on [![arXiv](https://img.shields.io/badge/arXiv-2504.03773-b31b1b.svg)](https://arxiv.org/abs/2504.03773).
 * 2025-01-15: We will upload our code after the paper is accepted.
@@ -123,7 +124,7 @@ The result is located in `Demo/checkpoint/$checkpoint_name$/PostProcess_of_Attri
 ### Dataset description
 Parameter settings:
 
-| Component |    $f_c$ (kHz)     |      $f_m$ (kHz)      |    Health    |   Fault #1   |   Fault #2   |
+| Component |    $f_c$ (kHz)     |      $f_m$ (Hz)      |    Health    |   Fault #1   |   Fault #2   |
 | :-------: | :----------------: | :-------------------: | :----------: | :----------: | :----------: |
 |   $C_0$   |        1.5         |          50           | $\checkmark$ | $\checkmark$ | $\checkmark$ |
 |   $C_H$   | $\mathcal{U}(1,4)$ | $\mathcal{U}(20,200)$ | $\checkmark$ |              |              |
